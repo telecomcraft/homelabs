@@ -30,3 +30,5 @@ The minimum requirements for running vSRX in KVM are
 - 20 GB storage
 
 `qm importdisk <vm-id> junos-vsrx3-x86-64-20.3R1.8.qcow2 local-lvm`
+
+## Step 4: Verify VM Bootup and Initial Login

@@ -54,19 +54,19 @@ nav:
     - Home: 'index.md'
     - About: 'about.md'
     - Network Labs:
-      - Lab Overview: 'labs/networks/overview.md'
-      - General:
+      - Network Labs Overview: 'labs/networks/overview.md'
+      - General Labs:
         - Using Proxmox vs EVE-NG for Networking Home Labs: 'labs/networks/general/using-proxmox-vs-eve-ng-for-networking-home-labs.md'
-      - Juniper:
+      - Juniper Labs:
         - Installing Juniper vSRX on Proxmox: 'labs/networks/juniper/installing-vsrx-on-proxmox.md'
         - Initial Junos OS Configuration: 'labs/networks/juniper/initial-junos-os-configuration.md'
-      - VyOS:
+      - VyOS Labs:
         - Installing VyOS on Proxmox: 'labs/networks/vyos/installing-vyos-on-proxmox.md'
     - Server Labs:
-      - Overview: 'labs/servers/overview.md'
+      - Server Labs Overview: 'labs/servers/overview.md'
       - Servers: 'labs/servers/ubuntu-linux.md'
     - Fiber Labs:
-      - Overview: 'labs/fiber/overview.md'
+      - Fiber Labs Overview: 'labs/fiber/overview.md'
 
 plugins:
   - git-committers:
