@@ -23,7 +23,7 @@ Verify the file was successfully transferred, and we'll revisit this again after
 
 vSRX will run as a VM on Proxmox VE, but it's not ready out of the box. You'll first have to create the VM configuration within Proxmox VE, including naming and hardware settings.
 
-The minimum requirements for running vSRX in KVM are
+The [minimum requirements for running vSRX in KVM](https://www.juniper.net/documentation/us/en/software/vsrx/vsrx-consolidated-deployment-guide/vsrx-kvm/topics/concept/security-vsrx-system-requirement-with-kvm.html) are
 
 - 2 CPUs
 - 4 GB RAM
