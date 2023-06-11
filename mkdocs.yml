@@ -1,1 +1,62 @@
-site_name: My Docs
+site_name: Telecom Craft Home Labs
+site_url: https://labs.telecomcraft.com
+
+theme:
+  name: material
+  logo: assets/logo.svg
+  icon:
+    repo: fontawesome/brands/github
+  palette:
+    # - primary: "grey"
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      toggle:
+        icon: material/lightbulb-outline
+        name: Switch to Dark Mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      toggle:
+        icon: material/lightbulb
+        name: Switch to Light Mode
+  features:
+    - navigation.tracking
+    - navigation.tabs
+    - navigation.top
+    - navigation.expand
+
+copyright: >
+  Copyright &copy; 2023 Telecom Craft –
+  <a href="#__consent">Change cookie settings</a>
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/telecomcraft/homelabs
+    - icon: fontawesome/brands/twitter
+      link: https://www.twitter.com/thetelecomcraft
+  consent:
+    title: Cookie consent
+    description: >- 
+      We use cookies to recognize your repeated visits and preferences, as well
+      as to measure the effectiveness of our documentation and whether users
+      find what they're searching for. With your consent, you're helping us to
+      make our documentation better.
+    actions:
+      - accept
+      - reject
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - md_in_html
+nav:
+    - Home: 'index.md'
+    - About: 'about.md'
+    - Network Labs:
+      - Juniper:
+        - Installing Juniper vSRX on Proxmox: 'labs/networks/juniper/installing_vsrx_on_proxmox.md'
+        - Initial Junos OS Configuration: 'labs/networks/juniper/initial_junos_os_configuration.md'
+      - VyOS:
+        - Installing VyOS on Proxmox: 'labs/networks/vyos/installing_vyos_on_proxmox.md'
+    - Server Labs:
+      - Servers: 'servers/ubuntu_linux.md'
