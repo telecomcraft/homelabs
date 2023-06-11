@@ -67,3 +67,8 @@ nav:
       - Servers: 'labs/servers/ubuntu-linux.md'
     - Fiber Labs:
       - Overview: 'labs/fiber/overview.md'
+
+plugins:
+  - git-committers:
+      repository: telecomcraft/homelabs
+      branch: main
