@@ -23,6 +23,7 @@ theme:
     - navigation.tabs
     - navigation.top
     - navigation.expand
+    - search.highlight
 
 copyright: >
   Copyright &copy; 2023 Telecom Craft –
@@ -53,10 +54,16 @@ nav:
     - Home: 'index.md'
     - About: 'about.md'
     - Network Labs:
+      - Lab Overview: 'labs/networks/overview.md'
+      - General:
+        - Using Proxmox vs EVE-NG for Networking Home Labs: 'labs/networks/general/using-proxmox-vs-eve-ng-for-networking-home-labs.md'
       - Juniper:
-        - Installing Juniper vSRX on Proxmox: 'labs/networks/juniper/installing_vsrx_on_proxmox.md'
-        - Initial Junos OS Configuration: 'labs/networks/juniper/initial_junos_os_configuration.md'
+        - Installing Juniper vSRX on Proxmox: 'labs/networks/juniper/installing-vsrx-on-proxmox.md'
+        - Initial Junos OS Configuration: 'labs/networks/juniper/initial-junos-os-configuration.md'
       - VyOS:
-        - Installing VyOS on Proxmox: 'labs/networks/vyos/installing_vyos_on_proxmox.md'
+        - Installing VyOS on Proxmox: 'labs/networks/vyos/installing-vyos-on-proxmox.md'
     - Server Labs:
-      - Servers: 'servers/ubuntu_linux.md'
+      - Overview: 'labs/servers/overview.md'
+      - Servers: 'labs/servers/ubuntu-linux.md'
+    - Fiber Labs:
+      - Overview: 'labs/fiber/overview.md'
