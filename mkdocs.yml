@@ -1,6 +1,7 @@
 site_name: Telecom Craft Home Labs
 site_url: https://labs.telecomcraft.com
 repo_url: https://github.com/telecomcraft/homelabs
+repo_name: telecomcraft/homelabs
 
 theme:
   name: material
@@ -28,8 +29,7 @@ theme:
     - search.highlight
 
 copyright: >
-  Copyright &copy; 2023 Telecom Craft –
-  <a href="#__consent">Change cookie settings</a>
+  Copyright &copy; 2023 Telecom Craft – <a href="#__consent">Change cookie settings</a>
 
 extra:
   social:
@@ -55,6 +55,8 @@ markdown_extensions:
 nav:
     - Home: 'index.md'
     - About: 'about.md'
+    - Blog:
+      - blog/index.md
     - Network Labs:
       - Network Labs Overview: 'labs/networks/overview.md'
       - General Labs:
@@ -71,6 +73,7 @@ nav:
       - Fiber Labs Overview: 'labs/fiber/overview.md'
 
 plugins:
+  - blog
   - search
   - git-committers:
       repository: telecomcraft/homelabs
