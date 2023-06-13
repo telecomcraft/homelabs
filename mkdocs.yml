@@ -29,12 +29,17 @@ theme:
     - search.highlight
 
 copyright: >
-  Copyright &copy; 2023 Telecom Craft – <a href="#__consent">Change cookie settings</a>
+  All content licensed under the <a href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International
+  License</a> by Telecom Craft – <a href="#__consent">Change cookie settings</a>
 
 extra:
   social:
+    - icon: fontawesome/brands/youtube 
+      link: https://www.youtube.com/@telecomcraft
+    - icon: fontawesome/brands/linkedin 
+      link: https://www.linkedin.com/company/telecomcraft
     - icon: fontawesome/brands/github
-      link: https://github.com/telecomcraft/homelabs
+      link: https://github.com/telecomcraft
     - icon: fontawesome/brands/twitter
       link: https://www.twitter.com/thetelecomcraft
   consent:
@@ -69,6 +74,8 @@ nav:
     - Server Labs:
       - Server Labs Overview: 'labs/servers/overview.md'
       - Servers: 'labs/servers/ubuntu-linux.md'
+    - Security Labs:
+      - Security Labs Overview: 'labs/security/overview.md'
     - Fiber Labs:
       - Fiber Labs Overview: 'labs/fiber/overview.md'
 
