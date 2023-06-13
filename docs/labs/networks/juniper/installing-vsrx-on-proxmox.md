@@ -1,3 +1,9 @@
+---
+tags:
+  - Juniper
+  - Proxmox
+---
+
 # Installing Juniper vSRX on Proxmox
 
 ## Step 1: Download a vSRX Image From Juniper

@@ -1,5 +1,6 @@
 site_name: Telecom Craft Home Labs
 site_url: https://labs.telecomcraft.com
+repo_url: https://github.com/telecomcraft/homelabs
 
 theme:
   name: material
@@ -23,6 +24,7 @@ theme:
     - navigation.tabs
     - navigation.top
     - navigation.expand
+    - navigation.path
     - search.highlight
 
 copyright: >
@@ -69,6 +71,14 @@ nav:
       - Fiber Labs Overview: 'labs/fiber/overview.md'
 
 plugins:
+  - search
   - git-committers:
       repository: telecomcraft/homelabs
       branch: main
+  - git-revision-date-localized:
+      enable_creation_date: true
+  - tags:
+      tags_slugify: !!python/object/apply:pymdownx.slugs.slugify
+          kwds:
+            case: lower
+      tags_file: tags.md
