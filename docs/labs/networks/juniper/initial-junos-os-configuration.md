@@ -1,3 +1,8 @@
+---
+tags:
+  - Juniper
+---
+
 # Initial Junos OS Configuration on a vSRX
 
 After installing vSRX in a VM, we’re ready to perform the initial configuration. Log in as user `root` (no password required), and enter configuration mode with `configure`.

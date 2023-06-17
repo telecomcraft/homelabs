@@ -1,3 +1,8 @@
+---
+search:
+  exclude: true
+---
+
 The first task is installing VyOS as a VM:
 
 1. Go to [https://vyos.io](https://vyos.io/) and look for the Download link in the main menu. Select “Free Download” from the dropdown menu, and look for the list item that says “[vyos-rolling-latest.iso](https://s3-us.vyos.io/rolling/current/vyos-rolling-latest.iso).” Instead of downloading it, however, just copy the link URL.

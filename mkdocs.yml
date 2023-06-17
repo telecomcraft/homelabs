@@ -29,8 +29,7 @@ theme:
     - search.highlight
 
 copyright: >
-  All content licensed under the <a href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International
-  License</a> by Telecom Craft – <a href="#__consent">Change cookie settings</a>
+  All content licensed under the <a href="http://creativecommons.org/licenses/by/4.0/">Creative Commons</a> by Telecom Craft – <a href="#__consent">Change cookie settings</a>
 
 extra:
   social:
@@ -57,27 +56,31 @@ markdown_extensions:
   - admonition
   - attr_list
   - md_in_html
+  - pymdownx.emoji:
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:materialx.emoji.to_svg
+
 nav:
     - Home: 'index.md'
     - About: 'about.md'
     - Blog:
       - blog/index.md
+    #- Fiber Labs:
+    #  - Fiber Labs Overview: 'labs/fiber/overview.md'
     - Network Labs:
       - Network Labs Overview: 'labs/networks/overview.md'
-      - General Labs:
-        - Using Proxmox vs EVE-NG for Networking Home Labs: 'labs/networks/general/using-proxmox-vs-eve-ng-for-networking-home-labs.md'
+      #- General Labs:
+        #- Using Proxmox vs EVE-NG for Networking Home Labs: 'labs/networks/general/using-proxmox-vs-eve-ng-for-networking-home-labs.md'
       - Juniper Labs:
         - Installing Juniper vSRX on Proxmox: 'labs/networks/juniper/installing-vsrx-on-proxmox.md'
-        - Initial Junos OS Configuration: 'labs/networks/juniper/initial-junos-os-configuration.md'
-      - VyOS Labs:
-        - Installing VyOS on Proxmox: 'labs/networks/vyos/installing-vyos-on-proxmox.md'
-    - Server Labs:
-      - Server Labs Overview: 'labs/servers/overview.md'
-      - Servers: 'labs/servers/ubuntu-linux.md'
-    - Security Labs:
-      - Security Labs Overview: 'labs/security/overview.md'
-    - Fiber Labs:
-      - Fiber Labs Overview: 'labs/fiber/overview.md'
+        #- Initial Junos OS Configuration: 'labs/networks/juniper/initial-junos-os-configuration.md'
+      #- VyOS Labs:
+        #- Installing VyOS on Proxmox: 'labs/networks/vyos/installing-vyos-on-proxmox.md'
+    #- Server Labs:
+    #  - Server Labs Overview: 'labs/servers/overview.md'
+    #- Security Labs:
+    #  - Security Labs Overview: 'labs/security/overview.md'
+    
 
 plugins:
   - blog
