@@ -40,9 +40,10 @@ for any VM or CT, so always verify this was properly done.
 * Run `sudo dpkg-reconfigure openssh-server` generate new key pairs.
 * Run `ls /etc/ssh` again to confirm the creation of the new key pairs.
 
-## Step 3: Create Two More Cloned Network Hosts
+## Step 3: Create Three More Cloned Network Hosts
 
-Now your network host is ready for use. Remember to always complete the steps
-above when creating new hosts.
+Now your network host is ready for use. Remember to always complete the steps above
+when creating new hosts. Before we wrap this lab up, you'll get some more practice.
 
-As a last step for this lab, use the steps above to create two more hosts named `host2` and `host3`, which we'll be using in the next lab, [Directly Connecting Network Hosts]().
+Use the steps above to create three more hosts named `host2`, `host3`, and `host4`,
+which we'll be using in the next lab, [Directly Connecting Network Hosts]().
