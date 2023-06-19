@@ -6,17 +6,16 @@ which could only do a very limited subset of network functions such as serving a
 
 But the role of network hosts in your labs can become capable of so much more
 functionality by using real operating systems such as Linux. Using them offers
-an opportunity to not only become more familiar with real hosts, but gain deeper
-insights into networking fundamentals as well.
+an opportunity to not only become more familiar with real hosts, but gain a deeper
+understanding into networking fundamentals as well.
 
 In addition, because nearly every network operating system (NOS) is built on Linux,
 understanding the underlying networking capabilities of the Linux kernel and all the
 included tools in a Linux host provide insights into how routers, switches, and
 firewalls work.
 
-In this lab we're going to create an Ubuntu Linux "template" inside Proxmox VE that
-can be cloned and used as powerful network hosts to interact with inside our network
-labs.
+In this lab we're going to create an [Ubuntu Linux](https://ubuntu.com/download/server)
+"template" inside Proxmox VE that can be cloned and used as powerful network hosts to interact with inside our network labs.
 
 ## Step 1: Download Ubuntu 22.04 LXC Template onto a Proxmox VE Node
 
@@ -119,5 +118,5 @@ You're now ready to convert this CT into a custom template.
 the Proxmox VE window, then click `Convert to template`.
 * Click the `Yes` button to proceed, and the CT will be converted into a template.
 
-Your network host template is now ready. Read the [Cloning a Network Host Template]()
-lab to practice creating Ubuntu Linux network hosts for use in upcoming labs.
+Your network host template is now ready. Complete the [Cloning a Network Host Template]() lab to practice creating Ubuntu Linux network hosts for use in
+upcoming labs.
