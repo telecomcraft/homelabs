@@ -80,4 +80,44 @@ Screenshot of Confirm
 
 ## Step 3: Update and Configure the Ubuntu Linux Server for Use as a Network Host
 
+Before this CT can become a custom template for cloning, there is some
+configuration to it that must be done. Select the newly-created `host0` CT from the
+list, then select the `Console` tab and click the `Start Now` button to run the CT.
+
+From there, log into the CT's root account using the password entered in Step 2
+above, and perform the following configuration steps:
+
+* Add a non-root administrator account with `adduser <user_name>`, and fill out the
+proceeding prompts.
+* Add the newly-created account to the sudo group to use administrator priveleges with `addgroup <user_name> sudo`
+* Log out of the root account with the `logout` command, then log in again using your
+new user name and password. Upon login, you should see the following message
+confirming sudo priveleges:
+
+```
+To run a command as administrator (user "root"), use "sudo <command>".
+See "man sudo_root" for details.
+```
+
+* Run `sudo apt update && sudo apt dist-upgrade` to upgrade all existing packages.
+* Run `sudo apt install network-manager nmap` to install several additional packages.
+* Run `sudo apt clean` to clean up the package database.
+* Run `sudo apt autoremove` to clean up unnecessary packages.
+* Run `sudo rm /etc/ssh/ssh_host_*` to remove the current SSH host keys so each
+clone regenerates new keys.
+* Run `sudo truncate -s 0 /etc/machine-id` to remove the current machine ID so each
+clone regenerates a new ID.
+* Run `sudo systemctl poweroff` to shut down the CT.
+
+What about the second interface?
+
 ## Step 4: Convert the Ubuntu Linux Server into a Custom Container Template
+
+You're now ready to convert this CT into a custom template.
+
+* With the CT powered down, click the `More` drop-down button at the top-right of
+the Proxmox VE window, then click `Convert to template`.
+* Click the `Yes` button to proceed, and the CT will be converted into a template.
+
+Your network host template is now ready. Read the [Cloning a Network Host Template]()
+lab to practice creating Ubuntu Linux network hosts for use in upcoming labs.
