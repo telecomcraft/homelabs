@@ -35,4 +35,6 @@ running within and then select the `System` > `Network` view of the content pane
 2. At the top-left of the network device table, click the `Create` dropdown button
 and select `Linux Bridge`.
 3. In the dialog box, ensure the Name is `vmbr1` and Autostart is checked, then
-click the `Create` button.
+click the Create button.
+4. At the top of the network device table, click the Apply Configuration button
+and the new bridge will be enabled.
