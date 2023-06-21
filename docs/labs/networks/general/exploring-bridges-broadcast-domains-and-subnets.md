@@ -22,9 +22,9 @@ with each of the other hosts, it should have ARP records accessible that map eac
 host's IPv4 address with its MAC address, which is what is actually used to
 communicate here on Layer 2.
 
-When hosts are restarted, however, the ARP table is flushed, so let's start out with
-a clean ARP table here, too, and populate it again so you can visibly see what's
-happening. First flush `host1`'s ARP table:
+When hosts are restarted, however, the ARP cache is flushed, so let's start out with
+a clean ARP cache here, too, and populate it again so you can visibly see what's
+happening. First flush `host1`'s ARP cache:
 
 ```
 ip neighbor flush dev eth0
@@ -51,8 +51,7 @@ Host is up (0.00013s latency).
 Nmap done: 256 IP addresses (4 hosts up) scanned in 16.61 seconds
 ```
 
-
-Now that we have a fresh network scan, let's look at `host1`'s ARP table
+Now that we have a fresh network scan, let's look at `host1`'s ARP cache
 using the `ip` tool, part of the `iproute2` suite of tools we'll be using
 regularly in our labs:
 
@@ -66,6 +65,100 @@ which should output the following:
 10.0.1.3 dev eth0 lladdr 00:50:56:16:30:c7 REACHABLE
 10.0.1.4 dev eth0 lladdr 00:50:56:ad:24:4a REACHABLE
 10.0.1.2 dev eth0 lladdr 00:50:56:ad:0e:33 REACHABLE
+```
+
+Entries in a device's ARP cache are cached for a certain amount of time and
+then cleared out, with the "soft" limit being once 512 entries are reached
+and the "hard" limit being when there are 1,024 entries, at which point the
+cache is cleared.
+
+Check the ARP cache again:
+
+```
+ip neighbor
+```
+
+and you will see the status of the existing entries have changed, and now indicate
+they may be flushed if new MAC addresses continue actively populating the ARP cache:
+
+```
+10.0.1.3 dev eth0 lladdr 00:50:56:16:30:c7 STALE
+10.0.1.4 dev eth0 lladdr 00:50:56:ad:24:4a STALE
+10.0.1.2 dev eth0 lladdr 00:50:56:ad:0e:33 STALE
+```
+
+We won't go much deeper into the innerworkings of the ARP cache at this point,
+but we will study how the protocol works for neighbor discovery, so you can
+see what goes on when hosts attempt to reach each other and how it relates to
+the ARP cache.
+
+To do this, let's operate from `host2`, and observe its interactions with `host1` at
+protocol level during a `ping` test. To begin, clear out `host2`'s ARP cache so
+we're starting fresh again:
+
+```
+sudo ip neighbor flush dev eth0
+```
+
+Return to `host1`, and begin a packet capture session using `tcpdump`, another crucial
+tool we'll be using constantly in our labs:
+
+```
+sudo tcpdump
+```
+
+Switch back to `host2`, where we're going to send `host1` a single `ping` request:
+
+```
+sudo ping -c 1 10.0.1.1
+```
+
+which should produce the following output:
+
+```
+PING 10.0.1.1 (10.0.1.1) 56(84) bytes of data.
+64 bytes from 10.0.1.1: icmp_seq=1 ttl=64 time=0.148 ms
+
+--- 10.0.1.1 ping statistics ---
+1 packets transmitted, 1 received, 0% packet loss, time 0ms
+rtt min/avg/max/mdev = 0.148/0.148/0.148/0.000 ms
+```
+
+Here you can see that one request packet was sent from `host1` to `host2`, and a reply
+packet from `host2` to `host1` was also successfully transferred, resulting in no packet
+loss. The two hosts successfully communicated, which means each should now have a record
+of the other in its ARP cache. Let's check `host2`'s ARP cache:
+
+```
+ip neighbor
+```
+
+which shows a fresh entry for `host2`:
+
+```
+10.0.1.1 dev eth0 lladdr 00:50:56:94:55:70 REACHABLE
+```
+
+This shows that not only was `host2`'s `ping` request successful, but that `host1` was
+properly captured in the ARP cache. The same is also true on the other side for `host1`.
+How did all of this happen exchanging just two packets?
+
+It didn't. Let's return to `host1`, and cancel out (`CTRL`+`C` on Windows) of the packet
+capture. Your output should look very similar to this:
+
+```
+tcpdump: verbose output suppressed, use -v[v]... for full protocol decode
+listening on eth0, link-type EN10MB (Ethernet), snapshot length 262144 bytes
+19:21:42.310066 ARP, Request who-has 10.0.1.1 tell 10.0.1.2, length 28
+19:21:42.310088 ARP, Reply 10.0.1.1 is-at 00:50:56:94:55:70 (oui Unknown), length 28
+19:21:42.310132 IP 10.0.1.2 > 10.0.1.1: ICMP echo request, id 21255, seq 1, length 64
+19:21:42.310140 IP 10.0.1.1 > 10.0.1.2: ICMP echo reply, id 21255, seq 1, length 64
+19:21:47.343328 ARP, Request who-has 10.0.1.2 tell 10.0.1.1, length 28
+19:21:47.343360 ARP, Reply 10.0.1.2 is-at 00:50:56:ad:0e:33 (oui Unknown), length 28
+^C
+6 packets captured
+6 packets received by filter
+0 packets dropped by kernel
 ```
 
 ## Dipping Our Toes into Bridging Details
