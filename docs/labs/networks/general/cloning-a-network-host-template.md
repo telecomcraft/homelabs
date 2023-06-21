@@ -46,4 +46,4 @@ Now your network host is ready for use. Remember to always complete the steps ab
 when creating new hosts. Before we wrap this lab up, you'll get some more practice.
 
 Use the steps above to create three more hosts named `host2`, `host3`, and `host4`,
-which we'll be using in the next lab, [Directly Connecting Network Hosts]().
+which we'll be using in the next lab, [Connecting and Configuring Network Hosts]().

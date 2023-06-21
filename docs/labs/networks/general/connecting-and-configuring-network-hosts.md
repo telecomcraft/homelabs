@@ -38,3 +38,57 @@ and select `Linux Bridge`.
 click the Create button.
 4. At the top of the network device table, click the Apply Configuration button
 and the new bridge will be enabled.
+
+## Step 2: Connecting Hosts to the Lab Bridge
+
+With our lab bridge created, we'll need to now change the bridge setting on each
+host's interface from `vmbr0` to `vmbr1`. Think of this like moving a host's patch
+cord from one hardware switch to another.
+
+We'll also be changing each host's MAC address on its interface to match up with
+the interfaces used in our labs. This helps to ensure your results are consistent
+with the lab instructions. Use the table below for the MAC address assignments:
+
+| Host | MAC Address |
+| ---- | ----------- |
+| host1 | 00:50:56:94:55:70 |
+| host2 | 00:50:56:AD:0E:33 |
+| host3 | 00:50:56:16:30:C7 |
+| host4 | 00:50:56:AD:24:4A |
+
+For each host, perform the following:
+
+1. From the Proxmox Web UI, select the CT in the resource tree and select the
+Network content panel.
+2. Select the network device
+
+## Step 3: Configuring Hosts to Communicate Across the Bridge
+
+With our hosts all added to the same bridge, which by default is also the same
+broadcast domain, they will be able to communicate once they obtain IP address
+configurations.
+
+For this lab, we will be using the `10.0.1.0/24` IPv4 subnet for the lab network.
+Because our network devices are set to static addresses, we'll have to manually
+assign the right address to the right host. Use the table below for the IP address assignments:
+
+| Host | IPv4 Address |
+| ---- | ------------ |
+| host1 | 10.0.1.1/24 |
+| host2 | 10.0.1.2/24 |
+| host3 | 10.0.1.3/24 |
+| host4 | 10.0.1.4/24 |
+
+For each host, perform the following:
+
+1. From the host's CLI, statically configure the assigned IPv4 address:
+
+    ! sudo ip addr add dev eth0 <ip_address>
+
+2. Verify the correct assigned address has been configured:
+
+    ! sudo ip addr show eth0
+
+## Step 3: Confirm Host Communication Across the Bridge
+
+## More Information

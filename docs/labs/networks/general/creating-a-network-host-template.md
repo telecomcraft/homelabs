@@ -1,4 +1,4 @@
-# Creating and Configuring an LXC Container Template for Cloning as Fully-functional Network Hosts
+# Creating and Configuring an LXC Container Template for Cloning as Network Hosts
 
 For a long time, network simulators like Packet Tracer and GNS3 would provide a very
 basic network host such as [VPCS](https://docs.gns3.com/docs/emulators/vpcs/),
@@ -99,7 +99,7 @@ See "man sudo_root" for details.
 ```
 
 * Run `sudo apt update && sudo apt dist-upgrade` to upgrade all existing packages.
-* Run `sudo apt install network-manager nmap` to install several additional packages.
+* Run `sudo apt install network-manager nmap ipcalc` to install several additional packages.
 * Run `sudo apt clean` to clean up the package database.
 * Run `sudo apt autoremove` to clean up unnecessary packages.
 * Run `sudo rm /etc/ssh/ssh_host_*` to remove the current SSH host keys so each
