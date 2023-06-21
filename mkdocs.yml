@@ -27,6 +27,7 @@ theme:
     - navigation.expand
     - navigation.path
     - search.highlight
+    - content.code.copy
 
 copyright: >
   All content licensed under the <a href="http://creativecommons.org/licenses/by/4.0/">Creative Commons</a> by Telecom Craft – <a href="#__consent">Change cookie settings</a>
@@ -56,6 +57,9 @@ markdown_extensions:
   - admonition
   - attr_list
   - md_in_html
+  - def_list
+  - pymdownx.tasklist:
+      custom_checkbox: true
   - pymdownx.emoji:
       emoji_index: !!python/name:materialx.emoji.twemoji
       emoji_generator: !!python/name:materialx.emoji.to_svg
@@ -69,8 +73,10 @@ nav:
     #  - Fiber Labs Overview: 'labs/fiber/overview.md'
     - Network Labs:
       - Network Labs Overview: 'labs/networks/overview.md'
-      #- General Labs:
-        #- Using Proxmox vs EVE-NG for Networking Home Labs: 'labs/networks/general/using-proxmox-vs-eve-ng-for-networking-home-labs.md'
+      - General Labs:
+        - Creating a Network Host Template in Proxmox: 'labs/networks/general/creating-a-network-host-template-in-proxmox.md'
+        - Cloning a Network Host Template in Proxmox: 'labs/networks/general/cloning-a-network-host-template-in-proxmox.md'
+        - Connecting and Configuring Network Hosts in Proxmox: 'labs/networks/general/connecting-and-configuring-network-hosts-in-proxmox.md'
       - Juniper Labs:
         - Installing Juniper vSRX on Proxmox: 'labs/networks/juniper/installing-vsrx-on-proxmox.md'
         #- Initial Junos OS Configuration: 'labs/networks/juniper/initial-junos-os-configuration.md'

@@ -1,7 +1,8 @@
 # Cloning a Network Host Template
 
-In the [Creating a Network Host Template]() lab, you learned how to create a
-custom template of Ubuntu Linux to use as a network host for labs.
+In the [Creating a Network Host Template](creating-a-network-host-template-in-proxmox.md)
+lab, you learned how to create a custom template of Ubuntu Linux to use as a network host
+for labs.
 
 In this lab, you'll learn how to clone and configure that template so it's ready
 to easily deploy new network hosts in your labs.
@@ -46,4 +47,5 @@ Now your network host is ready for use. Remember to always complete the steps ab
 when creating new hosts. Before we wrap this lab up, you'll get some more practice.
 
 Use the steps above to create three more hosts named `host2`, `host3`, and `host4`,
-which we'll be using in the next lab, [Connecting and Configuring Network Hosts]().
+which we'll be using in the next lab,
+[Connecting and Configuring Network Hosts](connecting-and-configuring-network-hosts-in-proxmox.md).

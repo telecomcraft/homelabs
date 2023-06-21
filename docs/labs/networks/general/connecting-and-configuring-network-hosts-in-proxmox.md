@@ -1,4 +1,4 @@
-# Connecting and Configuring Network Hosts
+# Connecting and Configuring Network Hosts in Proxmox
 
 Imagine having two physical Linux servers, each with a single network adapter.
 If you interconnect the two servers with a patch cord, and configure the network
@@ -81,14 +81,113 @@ assign the right address to the right host. Use the table below for the IP addre
 
 For each host, perform the following:
 
-1. From the host's CLI, statically configure the assigned IPv4 address:
+From the host's CLI, statically configure the assigned IPv4 address:
 
-    ! sudo ip addr add dev eth0 <ip_address>
+```
+sudo ip addr add dev eth0 <ip_address>
+```
 
-2. Verify the correct assigned address has been configured:
+Verify the correct assigned address has been configured:
 
-    ! sudo ip addr show eth0
+```
+sudo ip addr show eth0
+```
 
 ## Step 3: Confirm Host Communication Across the Bridge
 
-## More Information
+At this point, all hosts should be connected and reachable, or "up." As a best
+practice, always verify this.
+
+The most common method is to use the `ping` command, so let's use `host1` to test
+connectivity to the other three hosts. From `host1`, check to see if `host2` is
+available:
+
+```
+sudo ping -c4 10.0.1.2
+```
+
+Our `ping` response should be:
+
+```
+PING 10.0.1.2 (10.0.1.2) 56(84) bytes of data.
+64 bytes from 10.0.1.2: icmp_seq=1 ttl=64 time=0.069 ms
+64 bytes from 10.0.1.2: icmp_seq=2 ttl=64 time=0.035 ms
+64 bytes from 10.0.1.2: icmp_seq=3 ttl=64 time=0.035 ms
+64 bytes from 10.0.1.2: icmp_seq=4 ttl=64 time=0.036 ms
+
+--- 10.0.1.2 ping statistics ---
+4 packets transmitted, 4 received, 0% packet loss, time 3071ms
+rtt min/avg/max/mdev = 0.035/0.043/0.069/0.014 ms
+```
+
+Again from `host1`, check to see if `host3` is available:
+
+```
+sudo ping -c4 10.0.1.3
+```
+
+Our `ping` response should be:
+
+```
+PING 10.0.1.3 (10.0.1.3) 56(84) bytes of data.
+64 bytes from 10.0.1.3: icmp_seq=1 ttl=64 time=0.118 ms
+64 bytes from 10.0.1.3: icmp_seq=2 ttl=64 time=0.038 ms
+64 bytes from 10.0.1.3: icmp_seq=3 ttl=64 time=0.037 ms
+64 bytes from 10.0.1.3: icmp_seq=4 ttl=64 time=0.036 ms
+
+--- 10.0.1.3 ping statistics ---
+4 packets transmitted, 4 received, 0% packet loss, time 3077ms
+rtt min/avg/max/mdev = 0.036/0.057/0.118/0.035 ms
+```
+
+Again from `host1`, check to see if `host4` is available:
+
+```
+sudo ping -c4 10.0.1.4
+```
+
+Our `ping` response should be:
+
+```
+PING 10.0.1.4 (10.0.1.4) 56(84) bytes of data.
+64 bytes from 10.0.1.4: icmp_seq=1 ttl=64 time=0.099 ms
+64 bytes from 10.0.1.4: icmp_seq=2 ttl=64 time=0.029 ms
+64 bytes from 10.0.1.4: icmp_seq=3 ttl=64 time=0.034 ms
+64 bytes from 10.0.1.4: icmp_seq=4 ttl=64 time=0.026 ms
+
+--- 10.0.1.4 ping statistics ---
+4 packets transmitted, 4 received, 0% packet loss, time 3068ms
+rtt min/avg/max/mdev = 0.026/0.047/0.099/0.030 ms
+```
+
+While `ping` is an essential tool for network testing, when you are scanning
+subnets or looking for more information from hosts (such as what ports are
+open), use `nmap`. Let's test host connectivity again from `host1`, using
+`nmap` this time:
+
+```
+nmap -sn 10.0.1.0/24
+```
+
+Our network scan should be:
+
+```
+Starting Nmap 7.80 ( https://nmap.org ) at 2023-06-21 11:15 UTC
+Nmap scan report for 10.0.1.1
+Host is up (0.00034s latency).
+Nmap scan report for 10.0.1.2
+Host is up (0.00031s latency).
+Nmap scan report for 10.0.1.3
+Host is up (0.00021s latency).
+Nmap scan report for 10.0.1.4
+Host is up (0.00016s latency).
+Nmap done: 256 IP addresses (4 hosts up) scanned in 15.91 seconds
+```
+
+With one command, we can tell `nmap` to scan the entire `/24` subnet and report back
+the status of every host, including `host1`.
+
+Well done! We have built an entire network of Linux hosts that can communicate with
+each other. In the next lab, [Exploring Broadcast Domains and Subnets](),
+we will begin exploring our network to better understand how everything works
+together.
