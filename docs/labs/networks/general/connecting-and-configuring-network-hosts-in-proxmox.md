@@ -188,6 +188,7 @@ With one command, we can tell `nmap` to scan the entire `/24` subnet and report 
 the status of every host, including `host1`.
 
 Well done! We have built an entire network of Linux hosts that can communicate with
-each other. In the next lab, [Exploring Broadcast Domains and Subnets](),
+each other. In the next lab,
+[Exploring Bridges, Broadcast Domains and, Subnets](exploring-bridges-broadcast-domains-and-subnets.md),
 we will begin exploring our network to better understand how everything works
 together.

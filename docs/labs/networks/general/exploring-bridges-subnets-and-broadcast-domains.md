@@ -184,10 +184,111 @@ that is.
 
 As a result, `host1` also utilizes ARP in packet 5, at 19:21:47.343328, broadcasts
 a request asking who has `10.0.1.2`, as `10.0.1.1` needs to know. The sixth packet,
-at 19:21:47.343360, is the broadcast reply from `10.0.1.2` letting the bridge and `10.0.1.2` that it has that IP address, and its MAC address is 00:50:56:ad:0e:33.
+at 19:21:47.343360, is the broadcast reply from `10.0.1.2` letting the bridge and
+`10.0.1.2` that it has that IP address, and its MAC address is `00:50:56:ad:0e:33`.
 
+When the packet capture was stopped, it completed its job by reporting the number
+of packets captured, filtered, and dropped. We didn't have a filter defined, such
+as filtering out ARP packets, and no packets were dropped because of other
+transmission issues, so it was a successful job.
+
+One last point about ARP before we move on. Once `host1` and `host2` know each other,
+is ARP no longer necessary, since they can simply addresses each other directly during
+communication? As with anything in our labs, let's test it out.
+
+Just like before, put `host1` into a packet capture mode:
+
+```
+sudo tcpdump
+```
+
+and have `host2` ping `host1`. This time, however, have `host2` flood ping `host1` 25
+times:
+
+```
+sudo ping -f -c 25 10.0.1.1
+```
+
+This should result in something like the following:
+
+```
+tcpdump: verbose output suppressed, use -v[v]... for full protocol decode
+listening on eth0, link-type EN10MB (Ethernet), snapshot length 262144 bytes
+02:14:34.087556 IP 10.0.1.2 > 10.0.1.1: ICMP echo request, id 9783, seq 1, length 64
+02:14:34.087576 IP 10.0.1.1 > 10.0.1.2: ICMP echo reply, id 9783, seq 1, length 64
+02:14:34.087644 IP 10.0.1.2 > 10.0.1.1: ICMP echo request, id 9783, seq 2, length 64
+02:14:34.087647 IP 10.0.1.1 > 10.0.1.2: ICMP echo reply, id 9783, seq 2, length 64
+02:14:34.087702 IP 10.0.1.2 > 10.0.1.1: ICMP echo request, id 9783, seq 3, length 64
+02:14:34.087705 IP 10.0.1.1 > 10.0.1.2: ICMP echo reply, id 9783, seq 3, length 64
+02:14:34.087740 IP 10.0.1.2 > 10.0.1.1: ICMP echo request, id 9783, seq 4, length 64
+02:14:34.087743 IP 10.0.1.1 > 10.0.1.2: ICMP echo reply, id 9783, seq 4, length 64
+02:14:34.087769 IP 10.0.1.2 > 10.0.1.1: ICMP echo request, id 9783, seq 5, length 64
+02:14:34.087772 IP 10.0.1.1 > 10.0.1.2: ICMP echo reply, id 9783, seq 5, length 64
+02:14:34.087797 IP 10.0.1.2 > 10.0.1.1: ICMP echo request, id 9783, seq 6, length 64
+02:14:34.087800 IP 10.0.1.1 > 10.0.1.2: ICMP echo reply, id 9783, seq 6, length 64
+02:14:34.087845 IP 10.0.1.2 > 10.0.1.1: ICMP echo request, id 9783, seq 7, length 64
+02:14:34.087848 IP 10.0.1.1 > 10.0.1.2: ICMP echo reply, id 9783, seq 7, length 64
+02:14:34.087897 IP 10.0.1.2 > 10.0.1.1: ICMP echo request, id 9783, seq 8, length 64
+02:14:34.087900 IP 10.0.1.1 > 10.0.1.2: ICMP echo reply, id 9783, seq 8, length 64
+02:14:34.087933 IP 10.0.1.2 > 10.0.1.1: ICMP echo request, id 9783, seq 9, length 64
+02:14:34.087936 IP 10.0.1.1 > 10.0.1.2: ICMP echo reply, id 9783, seq 9, length 64
+02:14:34.087962 IP 10.0.1.2 > 10.0.1.1: ICMP echo request, id 9783, seq 10, length 64
+02:14:34.087964 IP 10.0.1.1 > 10.0.1.2: ICMP echo reply, id 9783, seq 10, length 64
+02:14:34.087997 IP 10.0.1.2 > 10.0.1.1: ICMP echo request, id 9783, seq 11, length 64
+02:14:34.088000 IP 10.0.1.1 > 10.0.1.2: ICMP echo reply, id 9783, seq 11, length 64
+02:14:34.088033 IP 10.0.1.2 > 10.0.1.1: ICMP echo request, id 9783, seq 12, length 64
+02:14:34.088036 IP 10.0.1.1 > 10.0.1.2: ICMP echo reply, id 9783, seq 12, length 64
+02:14:34.088078 IP 10.0.1.2 > 10.0.1.1: ICMP echo request, id 9783, seq 13, length 64
+02:14:34.088081 IP 10.0.1.1 > 10.0.1.2: ICMP echo reply, id 9783, seq 13, length 64
+02:14:34.088105 IP 10.0.1.2 > 10.0.1.1: ICMP echo request, id 9783, seq 14, length 64
+02:14:34.088108 IP 10.0.1.1 > 10.0.1.2: ICMP echo reply, id 9783, seq 14, length 64
+02:14:34.088141 IP 10.0.1.2 > 10.0.1.1: ICMP echo request, id 9783, seq 15, length 64
+02:14:34.088144 IP 10.0.1.1 > 10.0.1.2: ICMP echo reply, id 9783, seq 15, length 64
+02:14:34.088178 IP 10.0.1.2 > 10.0.1.1: ICMP echo request, id 9783, seq 16, length 64
+02:14:34.088180 IP 10.0.1.1 > 10.0.1.2: ICMP echo reply, id 9783, seq 16, length 64
+02:14:34.088221 IP 10.0.1.2 > 10.0.1.1: ICMP echo request, id 9783, seq 17, length 64
+02:14:34.088224 IP 10.0.1.1 > 10.0.1.2: ICMP echo reply, id 9783, seq 17, length 64
+02:14:34.088255 IP 10.0.1.2 > 10.0.1.1: ICMP echo request, id 9783, seq 18, length 64
+02:14:34.088257 IP 10.0.1.1 > 10.0.1.2: ICMP echo reply, id 9783, seq 18, length 64
+02:14:34.088295 IP 10.0.1.2 > 10.0.1.1: ICMP echo request, id 9783, seq 19, length 64
+02:14:34.088298 IP 10.0.1.1 > 10.0.1.2: ICMP echo reply, id 9783, seq 19, length 64
+02:14:34.088329 IP 10.0.1.2 > 10.0.1.1: ICMP echo request, id 9783, seq 20, length 64
+02:14:34.088331 IP 10.0.1.1 > 10.0.1.2: ICMP echo reply, id 9783, seq 20, length 64
+02:14:34.088373 IP 10.0.1.2 > 10.0.1.1: ICMP echo request, id 9783, seq 21, length 64
+02:14:34.088375 IP 10.0.1.1 > 10.0.1.2: ICMP echo reply, id 9783, seq 21, length 64
+02:14:34.088414 IP 10.0.1.2 > 10.0.1.1: ICMP echo request, id 9783, seq 22, length 64
+02:14:34.088417 IP 10.0.1.1 > 10.0.1.2: ICMP echo reply, id 9783, seq 22, length 64
+02:14:34.088448 IP 10.0.1.2 > 10.0.1.1: ICMP echo request, id 9783, seq 23, length 64
+02:14:34.088450 IP 10.0.1.1 > 10.0.1.2: ICMP echo reply, id 9783, seq 23, length 64
+02:14:34.088475 IP 10.0.1.2 > 10.0.1.1: ICMP echo request, id 9783, seq 24, length 64
+02:14:34.088478 IP 10.0.1.1 > 10.0.1.2: ICMP echo reply, id 9783, seq 24, length 64
+02:14:34.088502 IP 10.0.1.2 > 10.0.1.1: ICMP echo request, id 9783, seq 25, length 64
+02:14:34.088504 IP 10.0.1.1 > 10.0.1.2: ICMP echo reply, id 9783, seq 25, length 64
+02:14:39.183337 ARP, Request who-has 10.0.1.2 tell 10.0.1.1, length 28
+02:14:39.183380 ARP, Reply 10.0.1.2 is-at 00:50:56:ad:0e:33 (oui Unknown), length 28
+^C
+52 packets captured
+52 packets received by filter
+0 packets dropped by kernel
+```
+
+So the basic answer is that, for the most part, once hosts have cached their addresses
+in the ARP cache, they can communicate via unicast transmission. Every so often, however,
+ARP checks are sent to verify host addressing.
+
+!!! question
+
+    Wondering how often ARP is part of the transmissions between known hosts? Modify
+    the `ping` command above to use higher count flood pings and see what happens. If
+    it's too many, does the kernel drop packets?
+
+As we saw with the ARP process, the bridge plays a central role in enabling hosts to
+communicate. Let's move on and learn more about bridging, which involves many of
+the same concepts in hardware switching.
 
 ## Dipping Our Toes into Bridging Details
+
+
 
 ## Digging into Subnets and Broadcast Domains
 

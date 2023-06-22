@@ -58,6 +58,7 @@ markdown_extensions:
   - attr_list
   - md_in_html
   - def_list
+  - tables
   - pymdownx.tasklist:
       custom_checkbox: true
   - pymdownx.emoji:
@@ -77,6 +78,7 @@ nav:
         - Creating a Network Host Template in Proxmox: 'labs/networks/general/creating-a-network-host-template-in-proxmox.md'
         - Cloning a Network Host Template in Proxmox: 'labs/networks/general/cloning-a-network-host-template-in-proxmox.md'
         - Connecting and Configuring Network Hosts in Proxmox: 'labs/networks/general/connecting-and-configuring-network-hosts-in-proxmox.md'
+        - Exploring Bridges, Subnets, and Broadcast Domains: 'labs/networks/general/exploring-bridges-subnets-and-broadcast-domains.md'
       - Juniper Labs:
         - Installing Juniper vSRX on Proxmox: 'labs/networks/juniper/installing-vsrx-on-proxmox.md'
         #- Initial Junos OS Configuration: 'labs/networks/juniper/initial-junos-os-configuration.md'
