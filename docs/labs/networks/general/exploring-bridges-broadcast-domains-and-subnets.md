@@ -141,10 +141,10 @@ which shows a fresh entry for `host2`:
 
 This shows that not only was `host2`'s `ping` request successful, but that `host1` was
 properly captured in the ARP cache. The same is also true on the other side for `host1`.
-How did all of this happen exchanging just two packets?
+How did all of this happen exchanging just two packets? It didn't--it was six.
 
-It didn't. Let's return to `host1`, and cancel out (`CTRL`+`C` on Windows) of the packet
-capture. Your output should look very similar to this:
+Let's return to `host1`, and cancel out (`CTRL`+`C`
+on Windows) of the packet capture. Your output should look very similar to this:
 
 ```
 tcpdump: verbose output suppressed, use -v[v]... for full protocol decode
@@ -160,6 +160,32 @@ listening on eth0, link-type EN10MB (Ethernet), snapshot length 262144 bytes
 6 packets received by filter
 0 packets dropped by kernel
 ```
+
+We'll dig deep into analyzing packets in future labs, but knowing the basics is an
+invaluable skill from the beginning of your learning to enhance your ability to
+observe how protocols work and troubleshoot network issues that inevitably arise. So
+let's start with the packet capture from `host2`.
+
+On line 2, you see that `tcpdump` was listening on `host2`'s `eth0` interface, which
+is connected to `host2` via the `vmbr1`. That's obvious for this lab, as there's only
+one interface, but always check on devices with multiple ports.
+
+The next two lines, 3 and 4, are ARP packets. The first, at 19:21:42.310066, is a
+broadcast request from the bridge `vmbr1` to all hosts on the subnet asking who is
+`10.0.1.1`, as `10.0.1.2` needs to know. The next packet, at 19:21:42.310088, is 
+the broadcast reply from `10.0.1.1` letting the bridge and `10.0.1.2` that it has
+that IP address, and its MAC address is 00:50:56:94:55:70 (we'll discuss OUIs later).
+
+The bridge, like any switch, then sends the 3rd packet, at 19:21:42.310132, which
+is the ICMP echo request (the formal term for the protocol used by `ping`), to
+`host1`, now knowing who it is. `host1` responds with the proper ICMP echo reply
+in the packet at 19:21:42.310140, addressed to `10.0.1.2`, but not sure which host
+that is.
+
+As a result, `host1` also utilizes ARP in packet 5, at 19:21:47.343328, broadcasts
+a request asking who has `10.0.1.2`, as `10.0.1.1` needs to know. The sixth packet,
+at 19:21:47.343360, is the broadcast reply from `10.0.1.2` letting the bridge and `10.0.1.2` that it has that IP address, and its MAC address is 00:50:56:ad:0e:33.
+
 
 ## Dipping Our Toes into Bridging Details
 
