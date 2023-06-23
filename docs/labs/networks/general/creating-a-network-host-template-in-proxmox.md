@@ -165,5 +165,5 @@ the Proxmox VE window, then click `Convert to template`.
 * Click the `Yes` button to proceed, and the CT will be converted into a template.
 
 Your network host template is now ready. Complete the
-[Cloning a Network Host Template](cloning-a-network-host-template-in-proxmox.md)
+[Cloning a Network Host Template in Proxmox](cloning-a-network-host-template-in-proxmox.md)
 lab to practice creating Ubuntu Linux network hosts for use in upcoming labs.

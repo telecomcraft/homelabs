@@ -1,6 +1,6 @@
 # Cloning a Network Host Template
 
-In the [Creating a Network Host Template](creating-a-network-host-template-in-proxmox.md)
+In the [Creating a Network Host Template in Proxmox](creating-a-network-host-template-in-proxmox.md)
 lab, you learned how to create a custom template of Ubuntu Linux to use as a network host
 for labs.
 

@@ -1,4 +1,4 @@
-Based on our progress in the last lab, [Connecting and Configuring Netork Hosts](connecting-and-configuring-network-hosts-in-proxmox.md),
+Based on our progress in the last lab, [Connecting and Configuring Network Hosts in Proxmox](connecting-and-configuring-network-hosts-in-proxmox.md),
 we know that our four hosts are somehow able to communicate within their subnet.
 But how exactly are the hosts connecting?
 
@@ -10,13 +10,13 @@ and broadcasting domain to allow our hosts to communicate. Along the way, we'll 
 how these fundamental concepts lay the foundation for us to build increasingly
 complex labs.
 
-## Examining the State of Our Network Hosts
+## Step 1: Examining the State of Our Network Hosts
 
 The first thing we'll look at is the "state" of our network hosts. When `host1` sent
-`ping` requests and an `nmap` scan to the other hosts, and received received
-responses, it created records of how to reach them. But how did it find them?
+`ping` requests and an `nmap` scan to the other hosts, and received responses, it
+created records of how to reach them. But how did it find them?
 
-Remeber the Address Resolution Protocol (ARP)? In IPv4, ARP is the first point of
+Remember the Address Resolution Protocol (ARP)? In IPv4, ARP is the first point of
 contact between hosts on the same subnet. Because `host1` has already made contact
 with each of the other hosts, it should have ARP records accessible that map each
 host's IPv4 address with its MAC address, which is what is actually used to
@@ -36,7 +36,7 @@ Then perform the `nmap` network scan again:
 nmap -sn 10.0.1.0/24
 ```
 
-which should produce similar output:
+which should produce something similar to the following output:
 
 ```
 Starting Nmap 7.80 ( https://nmap.org ) at 2023-06-21 19:07 UTC
@@ -93,7 +93,7 @@ see what goes on when hosts attempt to reach each other and how it relates to
 the ARP cache.
 
 To do this, let's operate from `host2`, and observe its interactions with `host1` at
-protocol level during a `ping` test. To begin, clear out `host2`'s ARP cache so
+the protocol level during a `ping` test. To begin, clear out `host2`'s ARP cache so
 we're starting fresh again:
 
 ```
@@ -139,9 +139,10 @@ which shows a fresh entry for `host2`:
 10.0.1.1 dev eth0 lladdr 00:50:56:94:55:70 REACHABLE
 ```
 
-This shows that not only was `host2`'s `ping` request successful, but that `host1` was
+This means that not only was `host2`'s `ping` request successful, but that `host1` was
 properly captured in the ARP cache. The same is also true on the other side for `host1`.
-How did all of this happen exchanging just two packets? It didn't--it was six.
+How did all of this happen exchanging just two packets? It didn't—there were six
+packets involved.
 
 Let's return to `host1`, and cancel out (`CTRL`+`C`
 on Windows) of the packet capture. Your output should look very similar to this:
@@ -166,15 +167,17 @@ invaluable skill from the beginning of your learning to enhance your ability to
 observe how protocols work and troubleshoot network issues that inevitably arise. So
 let's start with the packet capture from `host2`.
 
-On line 2, you see that `tcpdump` was listening on `host2`'s `eth0` interface, which
-is connected to `host2` via the `vmbr1`. That's obvious for this lab, as there's only
-one interface, but always check on devices with multiple ports.
+On line 2, you see that `tcpdump` was listening on `host1`'s `eth0` interface, which
+is connected to `host2` via bridge `vmbr1` (again, think "switch"). That's obvious
+for this lab, as there's only one interface, but always check on devices with
+multiple ports.
 
 The next two lines, 3 and 4, are ARP packets. The first, at 19:21:42.310066, is a
 broadcast request from the bridge `vmbr1` to all hosts on the subnet asking who is
 `10.0.1.1`, as `10.0.1.2` needs to know. The next packet, at 19:21:42.310088, is 
 the broadcast reply from `10.0.1.1` letting the bridge and `10.0.1.2` that it has
-that IP address, and its MAC address is 00:50:56:94:55:70 (we'll discuss OUIs later).
+that IP address, and its MAC address is `00:50:56:94:55:70` (we'll discuss OUIs
+later).
 
 The bridge, like any switch, then sends the 3rd packet, at 19:21:42.310132, which
 is the ICMP echo request (the formal term for the protocol used by `ping`), to
@@ -182,7 +185,7 @@ is the ICMP echo request (the formal term for the protocol used by `ping`), to
 in the packet at 19:21:42.310140, addressed to `10.0.1.2`, but not sure which host
 that is.
 
-As a result, `host1` also utilizes ARP in packet 5, at 19:21:47.343328, broadcasts
+As a result, `host1` also utilizes ARP in packet 5, at 19:21:47.343328, broadcasting
 a request asking who has `10.0.1.2`, as `10.0.1.1` needs to know. The sixth packet,
 at 19:21:47.343360, is the broadcast reply from `10.0.1.2` letting the bridge and
 `10.0.1.2` that it has that IP address, and its MAC address is `00:50:56:ad:0e:33`.
@@ -193,7 +196,7 @@ as filtering out ARP packets, and no packets were dropped because of other
 transmission issues, so it was a successful job.
 
 One last point about ARP before we move on. Once `host1` and `host2` know each other,
-is ARP no longer necessary, since they can simply addresses each other directly during
+is ARP no longer necessary, since they can simply address each other directly during
 communication? As with anything in our labs, let's test it out.
 
 Just like before, put `host1` into a packet capture mode:
@@ -273,8 +276,9 @@ listening on eth0, link-type EN10MB (Ethernet), snapshot length 262144 bytes
 ```
 
 So the basic answer is that, for the most part, once hosts have cached their addresses
-in the ARP cache, they can communicate via unicast transmission. Every so often, however,
-ARP checks are sent to verify host addressing.
+in the ARP cache, they can communicate via unicast transmission. Every so often,
+however, ARP checks are sent to verify host addressing, thus the two extra packets in
+addition to the 25 pairs of ICMP request/reply pairs.
 
 !!! question
 
@@ -286,11 +290,11 @@ As we saw with the ARP process, the bridge plays a central role in enabling host
 communicate. Let's move on and learn more about bridging, which involves many of
 the same concepts in hardware switching.
 
-## Dipping Our Toes into Bridging Details
+## Step 2: Dipping Our Toes into Bridging Details
 
 
 
-## Digging into Subnets and Broadcast Domains
+## Step 3: Digging into Subnets and Broadcast Domains
 
 Must be on the same bridge
 Must be on the same subnet

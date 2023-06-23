@@ -187,8 +187,14 @@ Nmap done: 256 IP addresses (4 hosts up) scanned in 15.91 seconds
 With one command, we can tell `nmap` to scan the entire `/24` subnet and report back
 the status of every host, including `host1`.
 
+!!! question
+
+    Practice performing `ping` and `nmap` tests between the four hosts to get
+    comfortable with these essential tools. Which approach for network discovery
+    do you think is better?
+
 Well done! We have built an entire network of Linux hosts that can communicate with
 each other. In the next lab,
-[Exploring Bridges, Broadcast Domains and, Subnets](exploring-bridges-broadcast-domains-and-subnets.md),
+[Exploring Bridges, Subnets, and Broadcast Domains in Proxmox](exploring-bridges-subnets-and-broadcast-domains-in-proxmox.md),
 we will begin exploring our network to better understand how everything works
 together.
