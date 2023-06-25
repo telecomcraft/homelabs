@@ -8,10 +8,9 @@ A simple, but fully-functional network. And that's where you'll begin your
 learning on building networks, which is all about connecting hosts together.
 
 In this lab, we're going to directly connect our network hosts together virtually
-by adding them to a Linux bridge and configure them with the modern Linux
-networking tools NetworkManager and iproute2. No additional routers, switches, or
-firewalls will be necessary at this point; just the built-in functionality of
-Linux and Proxmox.
+by adding them to a Linux bridge and configuring them with basic network settings.
+No additional routers, switches, or firewalls will be necessary at this point;
+just the built-in functionality of Linux and Proxmox.
 
 ## Step 1: Create a Linux Bridge for Lab Connectivity
 
@@ -79,15 +78,9 @@ assign the right address to the right host. Use the table below for the IP addre
 | host3 | 10.0.1.3/24 |
 | host4 | 10.0.1.4/24 |
 
-For each host, perform the following:
-
-From the host's CLI, statically configure the assigned IPv4 address:
-
-```
-sudo ip addr add dev eth0 <ip_address>
-```
-
-Verify the correct assigned address has been configured:
+Within each host's `Network` settings in Proxmox, configure the `eth0` network
+device's IPv4 setting to the respective address in the table above and verify
+the correct assigned address has been configured:
 
 ```
 sudo ip addr show eth0
