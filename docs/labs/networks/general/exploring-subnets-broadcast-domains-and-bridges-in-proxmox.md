@@ -6,9 +6,9 @@ Recall that each host is configured with a network device connected to the `vmbr
 bridge and assigned an IPv4 address in the `10.0.1.0/24` subnet. These two factors are the key to understanding what is happening behind the scenes.
 
 In this lab, we're going to begin exploring the concepts of subnets, broadcasting
-domains, and bridges to allow our hosts to communicate. Along the way, we'll see
-how these fundamental concepts lay the foundation for us to build increasingly
-complex labs.
+domains, and bridges to allow our hosts to communicate (or not, in some cases).
+Along the way, we'll see how these fundamental concepts lay the foundation for us
+to build increasingly complex labs.
 
 ## Step 1: Examining the State of Our Network Hosts
 
@@ -629,20 +629,198 @@ them. Now Layer 2 communication is blocked by creating a second bridge, thus
 creating two broadcast domains. Bridging seems key to answering the question
 about preventing communication between subnets at Layer 2.
 
-Before we wrap up, let's quickly do a larger test of both unicast and broadcast
-communication. Like `host2`, change `host4`'s Bridge to `vmbr2`. Then arrange
-console windows for all four host in a quarter tile layout so they're all
-visible.
+Before we wrap up, let's perform a larger test of both unicast and broadcast
+communication. Like `host2`, change `host4`'s Bridge to `vmbr2`, but keep
+its IPv4 address `10.0.1.4/24`. Then arrange the console windows for all four
+hosts in a quarter tile layout so they're all visible.
 
-Keeping `host4`'s IPv4 address `10.0.1.4/24` start a ping test to that subnet's
-broadcast address:
-
-```
-sudo ping -b 10.0.1.255
-```
-
-Also start a packet capture again on `host2`:
+Start a packet capture again on `host2`:
 
 ```
 sudo tcpdump
 ```
+
+and start a ping test on `host4` to that subnet's broadcast address:
+
+```
+sudo ping -b -c 4 10.0.1.255
+```
+
+Next, start a packet capture on `host1`:
+
+```
+sudo tcpdump
+```
+
+and start a ping test on `host3`:
+
+```
+sudo ping -b -c 4 10.0.1.255
+```
+
+Let's review the results for each host, grouped by bridge.
+
+`host3` sent four ICMP echo requests, which were detected (but not replied to)
+by `host1` within bridge `vmbr1`:
+
+```
+eron@host3:~$ sudo ping -b -c 4 10.0.1.255
+WARNING: pinging broadcast address
+PING 10.0.1.255 (10.0.1.255) 56(84) bytes of data.
+
+--- 10.0.1.255 ping statistics ---
+4 packets transmitted, 0 received, 100% packet loss, time 3072ms
+```
+
+```
+eron@host1:~$ sudo tcpdump
+tcpdump: verbose output suppressed, use -v[v]... for full protocol decode
+listening on eth0, link-type EN10MB (Ethernet), snapshot length 262144 bytes
+11:23:16.591449 IP 10.0.1.3 > 10.0.1.255: ICMP echo request, id 54008, seq 1, length 64
+11:23:17.615374 IP 10.0.1.3 > 10.0.1.255: ICMP echo request, id 54008, seq 2, length 64
+11:23:18.639371 IP 10.0.1.3 > 10.0.1.255: ICMP echo request, id 54008, seq 3, length 64
+11:23:19.663375 IP 10.0.1.3 > 10.0.1.255: ICMP echo request, id 54008, seq 4, length 64
+^C
+4 packets captured
+4 packets received by filter
+0 packets dropped by kernel
+```
+
+Just as above, `host4` sent four ICMP echo requests, which were detected (but not
+replied to) by `host2` within bridge `vmbr2`:
+
+```
+eron@host4:~$ sudo ping -b -c 4 10.0.1.255
+WARNING: pinging broadcast address
+PING 10.0.1.255 (10.0.1.255) 56(84) bytes of data.
+
+--- 10.0.1.255 ping statistics ---
+4 packets transmitted, 0 received, 100% packet loss, time 3064ms
+```
+
+```
+eron@host2:~$ sudo tcpdump
+tcpdump: verbose output suppressed, use -v[v]... for full protocol decode
+listening on eth0, link-type EN10MB (Ethernet), snapshot length 262144 bytes
+11:22:47.191030 IP 10.0.1.4 > 10.0.1.255: ICMP echo request, id 27961, seq 1, length 64
+11:22:48.207371 IP 10.0.1.4 > 10.0.1.255: ICMP echo request, id 27961, seq 2, length 64
+11:22:49.231376 IP 10.0.1.4 > 10.0.1.255: ICMP echo request, id 27961, seq 3, length 64
+11:22:50.255377 IP 10.0.1.4 > 10.0.1.255: ICMP echo request, id 27961, seq 4, length 64
+^C
+4 packets captured
+4 packets received by filter
+0 packets dropped by kernel
+```
+
+Within bridge `vmbr1`, the two hosts were in the same subnet, and the broadcasts
+were captured as expected. Within bridge `vmbr2`, the two hosts were not in the
+same subnet, but the broadcasts were still captured.
+
+Remember that this was also expected, because regardless of the subnet, broadcasts
+are being transmitted across the entire Layer 2 broadcast domain, which right now
+is the whole bridge.
+
+So we see that bridges can isolate broadcast domains, but only when there is one
+subnet per bridge. But that essentially means having to restrict an entire switch
+to only one subnet, which is unrealistic in nearly any network with multiple
+subnets.
+
+As our final experiment, let's move `host2` and `host4` back to `vmbr1`, and
+change `host4`'s IPv4 address to `10.0.2.4/24`, so it's in the same subnet as
+`host2`. With those configuration changes made, we now how two subnets, each with
+two hosts, on one bridge. What happens when they start communicating?
+
+Start a packet capture on `host1`:
+
+```
+sudo tcpdump
+```
+
+and start a ping test to `10.0.1.0/24` network's broadcast address from `host3`:
+
+```
+sudo ping -b -c 4 10.0.1.255
+```
+
+Next start a packet capture on `host2`:
+
+```
+sudo tcpdump
+```
+
+and start a ping test to `10.0.2.0/24` network's broadcast address from `host4`:
+
+```
+sudo ping -b -c 4 10.0.2.255
+```
+
+Again we'll review the results for each host, grouped by bridge.
+
+`host3` sent four ICMP echo requests, which were detected (but not replied to)
+by `host1` within bridge `vmbr1`:
+
+```
+eron@host3:~$ sudo ping -b -c 4 10.0.1.255
+WARNING: pinging broadcast address
+PING 10.0.1.255 (10.0.1.255) 56(84) bytes of data.
+
+--- 10.0.1.255 ping statistics ---
+4 packets transmitted, 0 received, 100% packet loss, time 3065ms
+```
+
+```
+eron@host1:~$ sudo tcpdump
+tcpdump: verbose output suppressed, use -v[v]... for full protocol decode
+listening on eth0, link-type EN10MB (Ethernet), snapshot length 262144 bytes
+15:07:12.790897 IP 10.0.1.3 > 10.0.1.255: ICMP echo request, id 57207, seq 1, length 64
+15:07:13.807380 IP 10.0.1.3 > 10.0.1.255: ICMP echo request, id 57207, seq 2, length 64
+15:07:14.831382 IP 10.0.1.3 > 10.0.1.255: ICMP echo request, id 57207, seq 3, length 64
+15:07:15.855384 IP 10.0.1.3 > 10.0.1.255: ICMP echo request, id 57207, seq 4, length 64
+15:07:44.485779 IP 10.0.2.4 > 10.0.2.255: ICMP echo request, id 7169, seq 1, length 64
+15:07:45.487366 IP 10.0.2.4 > 10.0.2.255: ICMP echo request, id 7169, seq 2, length 64
+15:07:46.511402 IP 10.0.2.4 > 10.0.2.255: ICMP echo request, id 7169, seq 3, length 64
+15:07:47.535375 IP 10.0.2.4 > 10.0.2.255: ICMP echo request, id 7169, seq 4, length 64
+^C
+8 packets captured
+8 packets received by filter
+0 packets dropped by kernel
+```
+
+But wait, there are four broadcast packets from `host4` here as well! All `host4`
+did was send four ICMP echo requests on its own subnet, which were detected (but
+not replied to) by `host2` within bridge `vmbr1`:
+
+```
+eron@host4:~$ sudo ping -b -c 4 10.0.2.255
+WARNING: pinging broadcast address
+PING 10.0.2.255 (10.0.2.255) 56(84) bytes of data.
+
+--- 10.0.2.255 ping statistics ---
+4 packets transmitted, 0 received, 100% packet loss, time 3050ms
+```
+
+```
+eron@host2:~$ sudo tcpdump
+tcpdump: verbose output suppressed, use -v[v]... for full protocol decode
+listening on eth0, link-type EN10MB (Ethernet), snapshot length 262144 bytes
+15:07:12.790892 IP 10.0.1.3 > 10.0.1.255: ICMP echo request, id 57207, seq 1, length 64
+15:07:13.807374 IP 10.0.1.3 > 10.0.1.255: ICMP echo request, id 57207, seq 2, length 64
+15:07:14.831376 IP 10.0.1.3 > 10.0.1.255: ICMP echo request, id 57207, seq 3, length 64
+15:07:15.855379 IP 10.0.1.3 > 10.0.1.255: ICMP echo request, id 57207, seq 4, length 64
+15:07:44.485776 IP 10.0.2.4 > 10.0.2.255: ICMP echo request, id 7169, seq 1, length 64
+15:07:45.487364 IP 10.0.2.4 > 10.0.2.255: ICMP echo request, id 7169, seq 2, length 64
+15:07:46.511399 IP 10.0.2.4 > 10.0.2.255: ICMP echo request, id 7169, seq 3, length 64
+15:07:47.535372 IP 10.0.2.4 > 10.0.2.255: ICMP echo request, id 7169, seq 4, length 64
+^C
+8 packets captured
+8 packets received by filter
+0 packets dropped by kernel
+```
+
+The packet capture from `host2` shows packets from `host4` along with those from
+`host3` as well! So now we really see the problem: how can we restrict broadcast
+domains within the same bridge or switch containing multiple subnets?
+
+We'll figure that out in the next lab, [Exploring Subnets and VLANs in Proxmox](exploring-subnets-and-vlans-in-proxmox.md).
+Great work today; I know this was a long lab, but hopefully these concepts are
+starting to make sense.
