@@ -718,12 +718,12 @@ same subnet, but the broadcasts were still captured.
 
 Remember that this was also expected, because regardless of the subnet, broadcasts
 are being transmitted across the entire Layer 2 broadcast domain, which right now
-is the whole bridge.
+is the entire bridge.
 
 So we see that bridges can isolate broadcast domains, but only when there is one
 subnet per bridge. But that essentially means having to restrict an entire switch
 to only one subnet, which is unrealistic in nearly any network with multiple
-subnets.
+subnets. In a physical network, this would require a switch for each subnet.
 
 As our final experiment, let's move `host2` and `host4` back to `vmbr1`, and
 change `host4`'s IPv4 address to `10.0.2.4/24`, so it's in the same subnet as
