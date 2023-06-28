@@ -1,5 +1,7 @@
 # Exploring Subnets and VLANs in Proxmox
 
+## Introduction
+
 In this lab we're going to continue exploring subnets and begin to look at the
 role of VLANs in addressing the broadcast domain issue we observed in the
 previous lab. Recall from that lab that we ended up with two subnets on the same
@@ -909,7 +911,7 @@ Still nothing? Awesome, there should be no packets yet if everything has been se
 up right.
 
 Now we're going to perform a quick scan of the other subnet and examine the results.
-Starting on `host3`, run the following on `host1`:
+Starting on `host3`, run the following:
 
 ```
 nmap -sn 10.0.10.0/24
@@ -1708,12 +1710,12 @@ listening on eth0, link-type EN10MB (Ethernet), snapshot length 262144 bytes
 ```
 
 Another huge flurry of broadcast activity! My apologies for having you scroll
-through it all, but scanning such outlook, and even better—analyzing what's going
+through it all, but scanning such output, and even better—analyzing what's going
 on—is essential practice. Expect lots of output as part of these labs.
 
 So what did we see in all that? The network scan output reported that `host3` and
 `host4` were discovered; did you see where in the packet capture the ARP request
-and replies are? And speaking of packet captures, we left `tcpdump` running on
+and replies are? And speaking of packet captures, we left `tcpdump` running back on
 `host2`, so cancel that now and try to find any broadcasts involving `10.0.20.0/24`.
 
 Assuming everything was done correctly, there should be nothing from that second
@@ -1722,6 +1724,15 @@ subnet, as shown in the (heavily shortened) output below. Very good.
 ```
 (omitted)
 ...
+13:54:05.768997 ARP, Request who-has 10.0.10.44 tell 10.0.10.1, length 28
+13:54:05.768997 ARP, Request who-has 10.0.10.67 tell 10.0.10.1, length 28
+13:54:05.897167 ARP, Request who-has 10.0.10.192 tell 10.0.10.1, length 28
+13:54:05.897170 ARP, Request who-has 10.0.10.201 tell 10.0.10.1, length 28
+13:54:05.897171 ARP, Request who-has 10.0.10.203 tell 10.0.10.1, length 28
+13:54:05.897171 ARP, Request who-has 10.0.10.90 tell 10.0.10.1, length 28
+13:54:05.993145 ARP, Request who-has 10.0.10.248 tell 10.0.10.1, length 28
+13:54:07.432845 ARP, Request who-has 10.0.10.1 tell 10.0.10.2, length 28
+13:54:07.432890 ARP, Request who-has 10.0.10.2 tell 10.0.10.1, length 28
 13:54:07.432893 ARP, Reply 10.0.10.2 is-at 00:50:56:ad:0e:33 (oui Unknown), length 28
 13:54:07.432898 ARP, Reply 10.0.10.1 is-at 00:50:56:94:55:70 (oui Unknown), length 28
 ^C
@@ -1729,6 +1740,8 @@ subnet, as shown in the (heavily shortened) output below. Very good.
 769 packets received by filter
 0 packets dropped by kernel
 ```
+
+## Conclusion and Next Lab
 
 So there you have it: use VLANs around your subnets to maintain full control over
 your broadcast domains and take advantage of all the other benefits of VLANs that
