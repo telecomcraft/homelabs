@@ -80,11 +80,12 @@ nav:
         - Connecting and Configuring Network Hosts in Proxmox: 'labs/networks/general/connecting-and-configuring-network-hosts-in-proxmox.md'
         - Exploring Subnets, Broadcast Domains, and Bridges in Proxmox: 'labs/networks/general/exploring-subnets-broadcast-domains-and-bridges-in-proxmox.md'
         - Exploring Subnets and VLANs in Proxmox: 'labs/networks/general/exploring-subnets-and-vlans-in-proxmox.md'
+      - VyOS Labs:
+        - Installing VyOS on Proxmox: 'labs/networks/vyos/installing-vyos-on-proxmox.md'
       - Juniper Labs:
         - Installing Juniper vSRX on Proxmox: 'labs/networks/juniper/installing-vsrx-on-proxmox.md'
         #- Initial Junos OS Configuration: 'labs/networks/juniper/initial-junos-os-configuration.md'
-      #- VyOS Labs:
-        #- Installing VyOS on Proxmox: 'labs/networks/vyos/installing-vyos-on-proxmox.md'
+
     #- Server Labs:
     #  - Server Labs Overview: 'labs/servers/overview.md'
     #- Security Labs:

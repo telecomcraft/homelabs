@@ -1,6 +1,9 @@
 ---
 search:
   exclude: true
+tags:
+  - VyOS
+  - Proxmox
 ---
 
 # Installing VyOS on Proxmox

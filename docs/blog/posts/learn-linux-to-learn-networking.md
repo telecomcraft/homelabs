@@ -1,10 +1,10 @@
 ---
 draft: true 
-date: 2023-06-25
+date: 2023-07-04
 authors:
   - eronlloyd
 categories:
-  - Announcements
+  - Learning
 ---
 
-# Test?
+# Learn Linux to Learn Networking
