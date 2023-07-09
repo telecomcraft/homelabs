@@ -82,6 +82,7 @@ nav:
         - Exploring Subnets and VLANs in Proxmox: 'labs/networks/general/exploring-subnets-and-vlans-in-proxmox.md'
       - VyOS Labs:
         - Installing VyOS on Proxmox: 'labs/networks/vyos/installing-vyos-on-proxmox.md'
+        - Initial VyOS Configuration Best Practices: 'labs/networks/vyos/initial-vyos-configuration-best-practices.md'
       - Juniper Labs:
         - Installing Juniper vSRX on Proxmox: 'labs/networks/juniper/installing-vsrx-on-proxmox.md'
         #- Initial Junos OS Configuration: 'labs/networks/juniper/initial-junos-os-configuration.md'
@@ -93,7 +94,8 @@ nav:
     
 
 plugins:
-  - blog
+  - blog:
+      post_url_format: "{slug}"
   - search
   - git-committers:
       repository: telecomcraft/homelabs

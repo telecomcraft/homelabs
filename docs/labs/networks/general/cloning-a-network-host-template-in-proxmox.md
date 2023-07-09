@@ -1,3 +1,9 @@
+---
+tags:
+  - Proxmox
+  - Linux
+---
+
 # Cloning a Network Host Template
 
 In the [Creating a Network Host Template in Proxmox](creating-a-network-host-template-in-proxmox.md)

@@ -1,3 +1,9 @@
+---
+tags:
+  - Proxmox
+  - Linux
+---
+
 # Exploring Subnets and VLANs in Proxmox
 
 ## Introduction
@@ -1745,11 +1751,11 @@ subnet, as shown in the (heavily shortened) output below. Very good.
 
 So there you have it: use VLANs around your subnets to maintain full control over
 your broadcast domains and take advantage of all the other benefits of VLANs that
-I briefly mentioned in the beginning, and we'll dig into in new labs.
+I briefly mentioned in the beginning, which we'll dig into in new labs.
 
 Now isolating subnets against unwanted broadcast traffic is great, but what about
 unicast, multicast, or even anycast traffic that needs to be able to reach across
-networks? It's time to bring in Layer 3 and the role of routing to enable subnets
+subnets? It's time to bring in Layer 3 and the role of routing to enable subnets
 to communicate and full networks to function. But in order to do that, we'll need
 to add a router to our lab.
 

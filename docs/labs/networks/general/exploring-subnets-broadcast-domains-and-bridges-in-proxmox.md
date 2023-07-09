@@ -1,3 +1,11 @@
+---
+tags:
+  - Proxmox
+  - Linux
+---
+
+# Exploring Subnets, Broadcast Domains, and Bridges in Proxmox
+
 Based on our progress in the last lab, [Connecting and Configuring Network Hosts in Proxmox](connecting-and-configuring-network-hosts-in-proxmox.md),
 we know that our four hosts are somehow able to communicate within their subnet.
 But how exactly are the hosts connecting?
@@ -569,13 +577,19 @@ Before we wrap up this lab, let's consider the role of bridging in this situatio
 ## Step 3: Dipping Our Toes into Bridging Details
 
 Recall the differences between hubs and switches. Hubs broadcast all frames out
-to all connected hosts, and not those destined for the broadcast address. Switches,
-however, can enable unicast communication between hosts while limiting broadcasts
-to all hosts.
+to all connected hosts, and not those destined for the broadcast address. All
+connected hosts are also in the same collision domain, causing packets to collide
+when hosts attempt to communicate at the same time.
+
+Switches, however, can enable unicast communication between hosts while limiting
+broadcasts to all hosts. Each port on a switch is a separate collision domain, as
+well, preventing packet transmissions among hosts from interfering with each
+other.
 
 What about our Linux bridge? In an earlier lab I stated bridges are basically
-switches. Let's make some more changes to our network to experiment with the impact
-of bridges on subnets and broadcast domains.
+switches, especially in eliminating the impact of collision domains, but they
+share other characteristics, too. Let's make some more changes to our network
+to experiment with the impact of bridges on subnets and broadcast domains.
 
 The first thing we need to do is create another Linux bridge on our Proxmox
 hypervisor:

@@ -1,3 +1,9 @@
+---
+tags:
+  - Proxmox
+  - Linux
+---
+
 # Creating a Network Host Template in Proxmox
 
 For a long time, network simulators like Packet Tracer and GNS3 would provide a very

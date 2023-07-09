@@ -1,3 +1,9 @@
+---
+tags:
+  - Proxmox
+  - Linux
+---
+
 # Connecting and Configuring Network Hosts in Proxmox
 
 Imagine having two physical Linux servers, each with a single network adapter.

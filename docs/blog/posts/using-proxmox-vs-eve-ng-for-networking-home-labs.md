@@ -55,10 +55,3 @@ tools for designing, planning, and even monitoring your networking lab as part o
 I won’t be going into a lot of detail on Proxmox itself in the networking labs, as we’ll be covering that instead in our server labs, and outside of getting
 the NOSs installed on Proxmox, you should be able to follow along for everything else if you’re using another virtualization platform or even hardware gear
 for your own labs.
-
-I hope I’ve got you intrigued, or at least interested, in what we can do with networking inside a Proxmox hypervisor. In the next video, I’m going to show you
-how I’m using NetBox and draw.io to design and document my home lab. These skills are just as important as being able to configure a switch or router, so your
-home lab should integrate these activities from the start, too.
-
-If you like what you’ve heard so far, please subscribe to our channel and click the bell icon to be notified of every new video we release moving forward. And
-if you have any comments or questions, please share them below.
