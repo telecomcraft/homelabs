@@ -164,7 +164,7 @@ labs section later, but for now, this process is enough to get good at.
 
 We'll be creating many router VMs, so be sure to become comfortable with this
 process. Feel free to practice performing the process multiple times, deleting
-the VM after each installion.
+the VM after each installation.
 
 We've still got work to do on our router VM before we can use it in our network,
 so once you're ready to move on, head over to the [Initial VyOS Configuration Best

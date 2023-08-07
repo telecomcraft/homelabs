@@ -40,12 +40,25 @@ be made to make it different from the template. The hostname, machine ID, and
 network interface's MAC address are changed as part of the cloning process itself.
 
 However there is one crucial change that you'll have to manually make for each new
-host after the clone is created: generating new SSH keys. This is an essential step
-for any VM or CT, so always verify this was properly done.
+host after the clone is created: generating new SSH keys. This is an essential step for any VM or CT, so always verify this was properly done.
 
-* Run `ls /etc/ssh` to ensure no files starting with `ssh_host` exist.
-* Run `sudo dpkg-reconfigure openssh-server` generate new key pairs.
-* Run `ls /etc/ssh` again to confirm the creation of the new key pairs.
+First ensure no files starting with `ssh_host` exist:
+
+```
+ls /etc/ssh
+```
+
+Then generate new key pairs:
+
+```
+sudo dpkg-reconfigure openssh-server
+```
+
+Check again to confirm the creation of the new key pairs:
+
+```
+ls /etc/ssh
+```
 
 ## Step 3: Create Three More Cloned Network Hosts
 

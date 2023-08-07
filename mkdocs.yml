@@ -75,6 +75,7 @@ nav:
     - Network Labs:
       - Network Labs Overview: 'labs/networks/overview.md'
       - General Labs:
+        - Initial Proxmox Network Configuration: 'labs/networks/general/initial-proxmox-network-configuration.md'
         - Creating a Network Host Template in Proxmox: 'labs/networks/general/creating-a-network-host-template-in-proxmox.md'
         - Cloning a Network Host Template in Proxmox: 'labs/networks/general/cloning-a-network-host-template-in-proxmox.md'
         - Connecting and Configuring Network Hosts in Proxmox: 'labs/networks/general/connecting-and-configuring-network-hosts-in-proxmox.md'
@@ -83,12 +84,17 @@ nav:
       - VyOS Labs:
         - Installing VyOS on Proxmox: 'labs/networks/vyos/installing-vyos-on-proxmox.md'
         - Initial VyOS Configuration Best Practices: 'labs/networks/vyos/initial-vyos-configuration-best-practices.md'
+      - MikroTik Labs:
+        - Installing MikroTik RouterOS on Proxmox: 'labs/networks/mikrotik/installing-routeros-on-proxmox.md'
       - Juniper Labs:
         - Installing Juniper vSRX on Proxmox: 'labs/networks/juniper/installing-vsrx-on-proxmox.md'
         #- Initial Junos OS Configuration: 'labs/networks/juniper/initial-junos-os-configuration.md'
+      - APNIC Routing Labs:
+        - Overview: 'labs/networks/apnic/routing-labs.md'
+        - MikroTik: 'labs/networks/apnic/mikrotik/overview.md'
 
-    #- Server Labs:
-    #  - Server Labs Overview: 'labs/servers/overview.md'
+    - Server Labs:
+      - Server Labs Overview: 'labs/servers/overview.md'
     #- Security Labs:
     #  - Security Labs Overview: 'labs/security/overview.md'
     

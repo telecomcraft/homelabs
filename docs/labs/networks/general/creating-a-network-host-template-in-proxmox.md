@@ -98,13 +98,13 @@ above, and perform the following configuration tasks.
 Add a non-root administrator account and fill out the proceeding prompts:
 
 ```
-adduser <user_name>
+adduser admin
 ```
 
 Add the newly-created account to the sudo group to use administrator priveleges:
 
 ```
-addgroup <user_name> sudo
+addgroup admin sudo
 ```
 
 Log out of the root account then log in again using your new user name and password:
