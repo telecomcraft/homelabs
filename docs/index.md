@@ -5,5 +5,3 @@ hide:
 ---
 
 # Welcome to Our Home Labs!
-
-
