@@ -21,6 +21,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://labs.telecomcraft.com/blog/the-telecom-craft-homelabs-site-has-launched/</loc>
+         <lastmod>2023-08-16</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://labs.telecomcraft.com/diagrams/notes/</loc>
          <lastmod>2023-08-16</lastmod>
          <changefreq>daily</changefreq>
@@ -152,6 +157,16 @@
     </url>
     <url>
          <loc>https://labs.telecomcraft.com/quickrefs/tcpdump/</loc>
+         <lastmod>2023-08-16</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://labs.telecomcraft.com/blog/archive/2023/</loc>
+         <lastmod>2023-08-16</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://labs.telecomcraft.com/blog/category/announcements/</loc>
          <lastmod>2023-08-16</lastmod>
          <changefreq>daily</changefreq>
     </url>
