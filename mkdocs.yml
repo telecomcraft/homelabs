@@ -70,8 +70,8 @@ nav:
     - About: 'about.md'
     - Blog:
       - blog/index.md
-    #- Fiber Labs:
-    #  - Fiber Labs Overview: 'labs/fiber/overview.md'
+    - Fiber Labs:
+      - Fiber Labs Overview: 'labs/fiber/overview.md'
     - Network Labs:
       - Network Labs Overview: 'labs/networks/overview.md'
       - General Labs:
