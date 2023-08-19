@@ -8,7 +8,7 @@ search:
 Welcome to the Telecom Craft series on Fiber Optic Labs.
 
 In this series we’ll cover what we call the three “Ts” of fiber optic networking skills: termination,
-testing, and transmission. To learn more about my plans for the Fiber Optic Homelab and how it got
+testing, and transmission. To learn more about our plans for the Fiber Optic Homelab and how it got
 started, check out the link to the blog post.
 
 Before we get started, we want to mention that these videos are designed to focus on skill-building
