@@ -40,12 +40,12 @@ primarily it’s considered a router, firewall, VPN, and load balancer platform.
 
 VyOS [officially began in 2013](https://blog.vyos.io/index.php/2013/10/13/complete-source-code-fork)
 as a fork of the open source, community edition of Vyatta Core NOS, which was
-being discontinued by it’s parent company, Brocade. You’ll often see references to
-Vyatta both in the VyOS software and within the VyOS community, so I believe it’s
-helpful to have a basic understanding of the relationship.
+being discontinued by it’s parent company, Brocade. You’ll often see references
+to Vyatta both in the VyOS software and within the VyOS community, so I believe
+it’s helpful to have a basic understanding of the relationship.
 
-Vyatta was both the name of the NOS and its original company, which was founded in
-2005. At the time, it was an exciting and ambitious effort to produce an open
+Vyatta was both the name of the NOS and its original company, which was founded
+in 2005. At the time, it was an exciting and ambitious effort to produce an open
 source, Linux-based NOS that could run on commodity x86 hardware directly or as a
 virtual machine in a hypervisor such as ESXi or KVM. This is in comparison to
 having to purchase more expensive and purpose-built networking “appliances” for
@@ -79,7 +79,8 @@ cases.
 ## VyOS Architecture and Features
 
 As I mentioned above, VyOS is a Linux-based network operating system built directly
-on top of Debian Linux. 
+on top of Debian Linux. As a result, it benefits from all of the incredible advances
+now built into the Linux kernel
 
 ## VyOS Versioning Numbers and Release Cycles
 
@@ -109,7 +110,7 @@ Because it is built on top of Linux, there are many interesting devices you may 
 we’ll focus on these two common approaches.
 
 Regardless of how you run it, VyOS can serve you well at nearly any scale. If you’re just starting out, I’ll teach you the basics in
-a simple virtual lab environment you can run on nearly any desktop or laptop. From there, you can run it as your home router
+a simple virtual lab environment you can run on nearly any desktop or laptop. From there, you can run it as your home router,
 incorporate it into business networks, and even deploy it in data centers and on cloud providers. Of course all of these are great
 tutorial topics, so stay tuned!
 

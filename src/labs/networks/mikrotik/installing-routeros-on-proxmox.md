@@ -2,6 +2,8 @@
 
 ## Introduction
 
+This lab will cover the basic steps to install RouterOS on Proxmox.
+
 ## Step 1: Create a MikroTik Account
 
 ## Step 2: Adding RouterOS as an Image in Proxmox
