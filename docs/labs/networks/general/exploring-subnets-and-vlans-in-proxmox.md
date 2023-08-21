@@ -1759,6 +1759,6 @@ subnets? It's time to bring in Layer 3 and the role of routing to enable subnets
 to communicate and full networks to function. But in order to do that, we'll need
 to add a router to our lab.
 
-In the next lab, [Installing RouterOS on Proxmox](../vyos/installing-routeros-on-proxmox.md),
+In the next lab, [Installing RouterOS on Proxmox](../mikrotik/installing-routeros-on-proxmox.md),
 we'll learn how to install MikroTik's RouterOS, a fantastic network operating system
 (NOS), on Proxmox so we can use it as our router and firewall in future labs.
