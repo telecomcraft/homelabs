@@ -3,7 +3,7 @@ tags:
 - VyOS
 ---
 
-# Initial VyOS Configuration Best Practices
+# Initial VyOS Configuration Best Practices [DRAFT]
 
 After installing VyOS in a VM, we’re ready to perform the initial configuration.
 

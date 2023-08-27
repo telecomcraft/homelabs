@@ -4,7 +4,7 @@ tags:
 - RouterOS
 ---
 
-# Initial RouterOS Configuration Best Practices
+# Initial RouterOS Configuration Best Practices [DRAFT]
 
 After installing RouterOS in a VM, we’re ready to perform the initial configuration.
 

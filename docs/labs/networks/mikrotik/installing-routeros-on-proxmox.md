@@ -2,9 +2,10 @@
 tags:
 - MikroTik
 - RouterOS
+- Proxmox
 ---
 
-# Installing MikroTik RouterOS on Proxmox
+# Installing MikroTik RouterOS on Proxmox [DRAFT]
 
 ## Introduction
 

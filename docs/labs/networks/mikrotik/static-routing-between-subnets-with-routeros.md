@@ -2,9 +2,11 @@
 tags:
 - MikroTik
 - RouterOS
+- Linux
+- Proxmox
 ---
 
-# Static Routing Between Subnets with RouterOS
+# Static Routing Between Subnets with RouterOS [DRAFT]
 
 ## Lab Setup
 
