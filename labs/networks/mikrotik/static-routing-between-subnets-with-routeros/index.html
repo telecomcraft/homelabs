@@ -8,13 +8,9 @@
       
       
       
-        <link rel="canonical" href="https://labs.telecomcraft.com/labs/networks/mikrotik/installing-routeros-on-proxmox/">
+        <link rel="canonical" href="https://labs.telecomcraft.com/labs/networks/mikrotik/static-routing-between-subnets-with-routeros/">
       
       
-        <link rel="prev" href="../../vyos/initial-vyos-configuration-best-practices/">
-      
-      
-        <link rel="next" href="../../juniper/installing-vsrx-on-proxmox/">
       
       
         
@@ -25,7 +21,7 @@
     
     
       
-        <title>Installing MikroTik RouterOS on Proxmox - Telecom Craft Home Labs</title>
+        <title>Static Routing Between Subnets with RouterOS - Telecom Craft Home Labs</title>
       
     
     
@@ -73,7 +69,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#installing-mikrotik-routeros-on-proxmox" class="md-skip">
+        <a href="#static-routing-between-subnets-with-routeros" class="md-skip">
           Skip to content
         </a>
       
@@ -105,7 +101,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Installing MikroTik RouterOS on Proxmox
+              Static Routing Between Subnets with RouterOS
             
           </span>
         </div>
@@ -276,13 +272,11 @@
         
   
   
-    
-  
   
     
     
       <li class="md-tabs__item">
-        <a href="../../overview/" class="md-tabs__link md-tabs__link--active">
+        <a href="../../overview/" class="md-tabs__link">
           
   
   Network Labs
@@ -727,19 +721,19 @@
       
   
   
-    
-  
   
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
         
           <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
             
@@ -758,7 +752,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_5">
             <span class="md-nav__icon md-icon"></span>
             
@@ -1115,19 +1109,19 @@
                 
   
   
-    
-  
   
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_4" checked>
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_4" >
         
           <label class="md-nav__link" for="__nav_5_4" id="__nav_5_4_label" tabindex="0">
             
@@ -1146,7 +1140,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_4_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_4_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_5_4">
             <span class="md-nav__icon md-icon"></span>
             
@@ -1161,35 +1155,9 @@
                 
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    
-  
-    Installing MikroTik RouterOS on Proxmox
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../installing-routeros-on-proxmox/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1204,109 +1172,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#introduction" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Introduction
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#step-1-create-a-mikrotik-account" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Step 1: Create a MikroTik Account
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#step-2-adding-routeros-as-an-image-in-proxmox" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Step 2: Adding RouterOS as an Image in Proxmox
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Step 2: Adding RouterOS as an Image in Proxmox">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#option-a-use" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Option A: Use
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#step-3-creating-and-configuring-a-vm-for-routeros" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Step 3: Creating and Configuring a VM for RouterOS
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#step-3-installing-the-routeros-image-on-a-vm" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Step 3: Installing the RouterOS Image on a VM
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#conclusion-and-next-lab" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Conclusion and Next Lab
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1619,82 +1484,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#introduction" class="md-nav__link">
+  <a href="#lab-setup" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Introduction
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#step-1-create-a-mikrotik-account" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Step 1: Create a MikroTik Account
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#step-2-adding-routeros-as-an-image-in-proxmox" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Step 2: Adding RouterOS as an Image in Proxmox
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Step 2: Adding RouterOS as an Image in Proxmox">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#option-a-use" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Option A: Use
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#step-3-creating-and-configuring-a-vm-for-routeros" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Step 3: Creating and Configuring a VM for RouterOS
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#step-3-installing-the-routeros-image-on-a-vm" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Step 3: Installing the RouterOS Image on a VM
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#conclusion-and-next-lab" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Conclusion and Next Lab
+        Lab Setup
       
     </span>
   </a>
@@ -1718,61 +1511,6 @@
 
   
 
-
-  <nav class="md-path" aria-label="Navigation" >
-    <ol class="md-path__list">
-      
-        
-  
-    <li class="md-path__item">
-      <a href="../../../.." class="md-path__link">
-        
-  <span class="md-ellipsis">
-    Home
-  </span>
-
-      </a>
-    </li>
-  
-
-      
-      
-        
-  
-    
-    
-      <li class="md-path__item">
-        <a href="../../overview/" class="md-path__link">
-          
-  <span class="md-ellipsis">
-    Network Labs
-  </span>
-
-        </a>
-      </li>
-    
-  
-
-      
-        
-  
-    
-    
-      <li class="md-path__item">
-        <a href="./" class="md-path__link">
-          
-  <span class="md-ellipsis">
-    MikroTik Labs
-  </span>
-
-        </a>
-      </li>
-    
-  
-
-      
-    </ol>
-  </nav>
 
               
               <article class="md-content__inner md-typeset">
@@ -1800,36 +1538,15 @@
   
 
 
-<h1 id="installing-mikrotik-routeros-on-proxmox">Installing MikroTik RouterOS on Proxmox</h1>
-<h2 id="introduction">Introduction</h2>
-<p>To enable our subnets on Linux bridges to communicate within our labs across
-increasingly complex network topologies, we have to add Layer 3 and 4 capabilities
-to our setup. To do this, we're going incorporate MikroTik's RouterOS into Proxmox
-and serve in this capacity.</p>
-<p>If you're not familiar with RouterOS and why it's a fantastic platform to learn and
-use in your networks, <a href="/blog/learn-mikrotik-to-learn-networking">check out this blog post</a>
-where we cover what it is, its background and architecture, and its advantages for both
-practice labs and production networks.</p>
-<p>In this lab, we're going to cover the process to install a RouterOS virtual machine
-(VM) in Proxmox and prepare it for use as a full-featured router/firewall/vpn
-in our networks.</p>
-<h2 id="step-1-create-a-mikrotik-account">Step 1: Create a MikroTik Account</h2>
-<p>RouterOS is available to use for free, but with several caveats that you must be
-aware of:</p>
-<ol>
-<li>
-<p>Every instance of RouterOS you use must still be registered via a MikroTik
-account, even the free version.</p>
-</li>
-<li>
-<p>The free version is limited to </p>
-</li>
-</ol>
-<h2 id="step-2-adding-routeros-as-an-image-in-proxmox">Step 2: Adding RouterOS as an Image in Proxmox</h2>
-<h3 id="option-a-use">Option A: Use</h3>
-<h2 id="step-3-creating-and-configuring-a-vm-for-routeros">Step 3: Creating and Configuring a VM for RouterOS</h2>
-<h2 id="step-3-installing-the-routeros-image-on-a-vm">Step 3: Installing the RouterOS Image on a VM</h2>
-<h2 id="conclusion-and-next-lab">Conclusion and Next Lab</h2>
+<h1 id="static-routing-between-subnets-with-routeros">Static Routing Between Subnets with RouterOS</h1>
+<h2 id="lab-setup">Lab Setup</h2>
+<p>For this lab, we'll need the following to be pre-configured:</p>
+<ul>
+<li><code>host1</code> has an IPv4 address of 10.0.1.10/24</li>
+<li><code>host2</code> has an IPv4 address of 10.0.1.11/24</li>
+<li><code>host3</code> has an IPv4 address of 10.0.2.10/24</li>
+<li><code>host4</code> has an IPv4 address of 10.0.2.11/24</li>
+</ul>
 
   
     
@@ -1853,7 +1570,7 @@ account, even the free version.</p>
         <span class="md-icon" title="Created">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3h-2Z"/></svg>
         </span>
-        <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">August 7, 2023</span>
+        <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">August 27, 2023</span>
       </span>
     
     
