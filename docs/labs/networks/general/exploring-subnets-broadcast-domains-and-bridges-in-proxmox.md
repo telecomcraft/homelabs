@@ -741,7 +741,7 @@ subnets. In a physical network, this would require a switch for each subnet.
 
 As our final experiment, let's move `host2` and `host4` back to `vmbr1`, and
 change `host4`'s IPv4 address to `10.0.2.4/24`, so it's in the same subnet as
-`host2`. With those configuration changes made, we now how two subnets, each with
+`host2`. With those configuration changes made, we now have two subnets, each with
 two hosts, on one bridge. What happens when they start communicating?
 
 Start a packet capture on `host1`:

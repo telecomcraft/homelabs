@@ -194,6 +194,6 @@ the status of every host, including `host1`.
 
 Well done! We have built an entire network of Linux hosts that can communicate with
 each other. In the next lab,
-[Exploring Bridges, Subnets, and Broadcast Domains in Proxmox](exploring-bridges-subnets-and-broadcast-domains-in-proxmox.md),
+[Exploring Bridges, Subnets, and Broadcast Domains in Proxmox](exploring-subnets-broadcast-domains-and-bridges-in-proxmox.md),
 we will begin exploring our network to better understand how everything works
 together.
