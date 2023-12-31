@@ -10,7 +10,7 @@ tags:
 
 To enable our subnets on Linux bridges to communicate within our labs across
 increasingly complex network topologies, we have to add Layer 3 and 4 capabilities
-to our setup. To do this, we're going incorporate VyOS into Proxmox and serve in
+to our setup. To do this, we can incorporate VyOS into Proxmox and serve in
 this capacity.
 
 If you're not familiar with VyOS and why it's a fantastic platform to learn and
@@ -27,11 +27,6 @@ To create a VM in Proxmox, you'll first need an "image" file of the software tha
 will run as the operating system for your VM. This can come in different formats,
 but it often has a `.iso` file extension. Let's get the VyOS image we'll use for
 our router/firewall VMs.
-
-Go to [https://vyos.io](https://vyos.io/) and look for the "Download" link in the
-main menu. Select “Free Download” from the dropdown menu, and look for the list
-item that says “[vyos-rolling-latest.iso](https://s3-us.vyos.io/rolling/current/vyos-rolling-latest.iso).”
-Instead of downloading it, however, just copy the link URL.
 
 !!! info
 
@@ -52,6 +47,11 @@ Instead of downloading it, however, just copy the link URL.
     For our home lab use, we will be using the rolling releases, and in a later
     video, we'll cover how to regularly update to the latest rolling release as
     new features become available.
+
+Go to [https://vyos.io](https://vyos.io/) and look for the "Download" link in the
+main menu. Select “Free Download” from the dropdown menu, and look for the heading
+that says “[Available builds](https://vyos.net/get/nightly-builds/).” Find the first
+link in the list, but instead of downloading it, however, just copy the link URL.
 
 Go to the “local” storage view of your Proxmox hypervisor and click on "ISO
 Images". Click on the “Download from URL” button and paste the link URL we just

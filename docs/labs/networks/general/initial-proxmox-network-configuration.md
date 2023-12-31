@@ -66,8 +66,8 @@ The device used to install Proxmox should have at least two NICs:
 
 Ideally, it would be better to have at least four NICs:
 
-* One for `vmbr0`
-* One for cluster communication
+* One for (ideally isolated) network management
+* One for cluster communication between nodes
 * One for production VMs and CTs to access your LAN
 * One for lab VMs and CTs to access your LAN
 
@@ -76,27 +76,31 @@ the necessary hardware, but for now we'll focus on a two NIC configuration.
 
 ### Custom MAC Address Prefix
 
-By default, Proxmox uses unregistered and randomized MAC addresses for the virtual
+!!! notice
+
+    This section is for users of PVE 8.0 and older. PVE 8.1 introduced a new option
+    that provides Proxmox's recently acquired UAA by default.
+
+Prior to PVE 8.1, Proxmox used unregistered and randomized MAC addresses for the virtual
 network devices for VMs and CTs, which are listed within the "Hardware" view for
-VMs and the "Network" view for CTs. There are called Locally Administered
+VMs and the "Network" view for CTs. These are called Locally Administered
 Addresses (LAAs).
 
 Used for server VMs and CTs, this doesn't seem to be an issue. However, I ran into
-and issue when installing VyOS on Proxmox where it wouldn't add all detected
+an issue when installing VyOS on Proxmox where it wouldn't add all detected
 interfaces to the configuration because the the MAC addresses weren't Universally
 Administered Address (UAAs). It may also affect other network operating systems
 (NOSs) as well, but I haven't yet verified that.
 
 It won't prevent you from configuring and using VyOS on Proxmox, but it can help
 new users to have this functionality in place and the fix is easy: instead of
-using LAA MAC addresses, set a custom prefix that Promox will use as a UAA OUI for
+using LAA MAC addresses, set a custom prefix that Proxmox will use as a UAA OUI for
 all network devices.
 
 To do this, click on the "Datacenter" your node is in, then click on "Options"
-and edit the "MAC address prefix" to be `00:50:56`. This is the VMWare OUI used
-for network devices within their virtualization platforms, and VyOS (or any other
-OS) should properly recognize it.
+and edit the "MAC address prefix" to be `BC:24:11`. This is the new Proxmox OUI used
+for network devices within PVE, and VyOS (or any other OS) should properly recognize it.
 
 From now on all virtual network devices will be issued a UAA MAC address with the
-`00:50:56` OUI and a random suffix. For some labs I may have you configure
+`BC:24:11` OUI and a random suffix. For some labs I may have you configure
 specific MAC addresses for lab tasks, so maintaining consistency will be helpful.

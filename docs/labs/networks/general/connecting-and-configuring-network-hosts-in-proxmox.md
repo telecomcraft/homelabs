@@ -20,7 +20,7 @@ just the built-in functionality of Linux and Proxmox.
 
 ## Step 1: Create a Linux Bridge for Lab Connectivity
 
-A [Linux bridge](https://developers.redhat.com/articles/2022/04/06/introduction-linux-bridging-commands-and-features#bridge_switchdev)
+A [Linux bridge](https://developers.redhat.com/articles/2022/04/06/introduction-linux-bridging-commands-and-features)
 is like a basic switch integrated into the operating system that
 supports things like STP and VLAN trunking, and allows virtual machines and containers to communicate within hypervisors, like Proxmox.
 

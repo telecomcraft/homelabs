@@ -72,6 +72,8 @@ nav:
       - blog/index.md
     - Fiber Labs:
       - Fiber Labs Overview: 'labs/fiber/overview.md'
+      - Safety Tips: 'labs/fiber/safety-tips.md'
+      - Patch Cords and Connectors: 'labs/fiber/patch-cords-and-connectors.md'
     - Network Labs:
       - Network Labs Overview: 'labs/networks/overview.md'
       - General Labs:
@@ -86,18 +88,22 @@ nav:
         - Initial VyOS Configuration Best Practices: 'labs/networks/vyos/initial-vyos-configuration-best-practices.md'
       - MikroTik Labs:
         - Installing MikroTik RouterOS on Proxmox: 'labs/networks/mikrotik/installing-routeros-on-proxmox.md'
-      - Juniper Labs:
-        - Installing Juniper vSRX on Proxmox: 'labs/networks/juniper/installing-vsrx-on-proxmox.md'
+      #- Juniper Labs:
+        #- Installing Juniper vSRX on Proxmox: 'labs/networks/juniper/installing-vsrx-on-proxmox.md'
         #- Initial Junos OS Configuration: 'labs/networks/juniper/initial-junos-os-configuration.md'
       - APNIC Routing Labs:
         - Overview: 'labs/networks/apnic/routing-labs.md'
         - MikroTik: 'labs/networks/apnic/mikrotik/overview.md'
-
     - Server Labs:
       - Server Labs Overview: 'labs/servers/overview.md'
     #- Security Labs:
     #  - Security Labs Overview: 'labs/security/overview.md'
-    
+    - Quick Refs:
+      - Overview: 'quickrefs/overview.md'
+      - MikroTik:
+        - RouterOS Basic Setup Checklist: 'quickrefs/routeros-basic-setup-checklist.md'
+      - VyOS:
+        - VyOS Basic Configuration: 'quickrefs/vyos-basic-configuration.md'
 
 plugins:
   - blog:
